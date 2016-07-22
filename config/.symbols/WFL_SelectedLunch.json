@@ -1,0 +1,790 @@
+{
+    "constructors": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 36
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "WFL_SelectedLunch",
+            "parameters": [],
+            "references": [],
+            "type": null
+        }
+    ],
+    "externalReferences": [],
+    "id": "01p50000002BjJ4AAK",
+    "innerClasses": [
+        {
+            "constructors": [
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 16,
+                        "line": 19
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "LM",
+                    "parameters": [
+                        {
+                            "name": "lm",
+                            "type": "Lunch_Meetup__c"
+                        },
+                        {
+                            "name": "u",
+                            "type": "User"
+                        }
+                    ],
+                    "references": [],
+                    "type": null
+                }
+            ],
+            "externalReferences": [],
+            "id": null,
+            "innerClasses": [],
+            "interfaces": [],
+            "key": null,
+            "methods": [],
+            "name": "LM",
+            "namespace": null,
+            "parentClass": "",
+            "properties": [
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 8
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "sfid",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 9
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "name",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 10
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "organiser",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 11
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "startDate",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 12
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "endDate",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 13
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "startTime",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 14
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "endTime",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 15
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "location",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 16
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "nbParticipant",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 17
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "smallPhoto",
+                    "references": [],
+                    "type": "String"
+                }
+            ],
+            "tableDeclaration": {
+                "annotations": [],
+                "location": {
+                    "column": 18,
+                    "line": 7
+                },
+                "modifiers": [
+                    "public"
+                ],
+                "name": "LM",
+                "references": [],
+                "type": "LM"
+            },
+            "variables": [
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 35,
+                        "line": 19
+                    },
+                    "modifiers": [],
+                    "name": "lm",
+                    "references": [],
+                    "type": "Lunch_Meetup__c"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 44,
+                        "line": 19
+                    },
+                    "modifiers": [],
+                    "name": "u",
+                    "references": [],
+                    "type": "User"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 22,
+                        "line": 27
+                    },
+                    "modifiers": [],
+                    "name": "sdt",
+                    "references": [],
+                    "type": "Datetime"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 22,
+                        "line": 28
+                    },
+                    "modifiers": [],
+                    "name": "edt",
+                    "references": [],
+                    "type": "Datetime"
+                }
+            ]
+        },
+        {
+            "constructors": [
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 16,
+                        "line": 90
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "LMParticipants",
+                    "parameters": [
+                        {
+                            "name": "pname",
+                            "type": "String"
+                        },
+                        {
+                            "name": "url",
+                            "type": "String"
+                        },
+                        {
+                            "name": "lmid",
+                            "type": "String"
+                        }
+                    ],
+                    "references": [],
+                    "type": null
+                }
+            ],
+            "externalReferences": [],
+            "id": null,
+            "innerClasses": [],
+            "interfaces": [],
+            "key": null,
+            "methods": [],
+            "name": "LMParticipants",
+            "namespace": null,
+            "parentClass": "",
+            "properties": [
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 86
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "name",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 87
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "smallPhotoUrl",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 23,
+                        "line": 88
+                    },
+                    "modifiers": [
+                        "public"
+                    ],
+                    "name": "lunchMeetupId",
+                    "references": [],
+                    "type": "String"
+                }
+            ],
+            "tableDeclaration": {
+                "annotations": [],
+                "location": {
+                    "column": 18,
+                    "line": 85
+                },
+                "modifiers": [
+                    "public"
+                ],
+                "name": "LMParticipants",
+                "references": [],
+                "type": "LMParticipants"
+            },
+            "variables": [
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 38,
+                        "line": 90
+                    },
+                    "modifiers": [],
+                    "name": "pname",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 52,
+                        "line": 90
+                    },
+                    "modifiers": [],
+                    "name": "url",
+                    "references": [],
+                    "type": "String"
+                },
+                {
+                    "annotations": [],
+                    "location": {
+                        "column": 64,
+                        "line": 90
+                    },
+                    "modifiers": [],
+                    "name": "lmid",
+                    "references": [],
+                    "type": "String"
+                }
+            ]
+        }
+    ],
+    "interfaces": [],
+    "key": "01p50000002BjJ4AAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 43
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "loadLunchMeetups",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 58
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "loadSelectedLunch",
+            "parameters": [
+                {
+                    "name": "lunchId",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "RemoteAction"
+                }
+            ],
+            "location": {
+                "column": 40,
+                "line": 98
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "getParticipants",
+            "parameters": [
+                {
+                    "name": "lunchMeetup",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "LIST",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "RemoteAction"
+                }
+            ],
+            "location": {
+                "column": 39,
+                "line": 113
+            },
+            "modifiers": [
+                "static",
+                "global"
+            ],
+            "name": "removeParticipant",
+            "parameters": [
+                {
+                    "name": "userId",
+                    "type": "String"
+                },
+                {
+                    "name": "lunchMeetup",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "Map",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "RemoteAction"
+                }
+            ],
+            "location": {
+                "column": 39,
+                "line": 134
+            },
+            "modifiers": [
+                "static",
+                "global"
+            ],
+            "name": "addParticipant",
+            "parameters": [
+                {
+                    "name": "userId",
+                    "type": "String"
+                },
+                {
+                    "name": "lunchMeetup",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "Map",
+            "type": null
+        }
+    ],
+    "name": "WFL_SelectedLunch",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 2
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 19,
+                "line": 3
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "lunchDescription",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 5
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "lunchMeetups",
+            "references": [],
+            "type": "LIST"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 14,
+            "line": 1
+        },
+        "modifiers": [
+            "global"
+        ],
+        "name": "WFL_SelectedLunch",
+        "references": [],
+        "type": "WFL_SelectedLunch"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 10,
+                "line": 37
+            },
+            "modifiers": [],
+            "name": "lunchId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 31,
+                "line": 44
+            },
+            "modifiers": [],
+            "name": "lms",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 30,
+                "line": 52
+            },
+            "modifiers": [],
+            "name": "lm",
+            "references": [],
+            "type": "Lunch_Meetup__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 53
+            },
+            "modifiers": [],
+            "name": "u",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 43,
+                "line": 58
+            },
+            "modifiers": [],
+            "name": "lunchId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 63,
+                "line": 98
+            },
+            "modifiers": [],
+            "name": "lunchMeetup",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 36,
+                "line": 99
+            },
+            "modifiers": [],
+            "name": "lps",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 30,
+                "line": 102
+            },
+            "modifiers": [],
+            "name": "lmps",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 35,
+                "line": 104
+            },
+            "modifiers": [],
+            "name": "lp",
+            "references": [],
+            "type": "Lunch_Participant__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 105
+            },
+            "modifiers": [],
+            "name": "u",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 64,
+                "line": 113
+            },
+            "modifiers": [],
+            "name": "userId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 79,
+                "line": 113
+            },
+            "modifiers": [],
+            "name": "lunchMeetup",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 40,
+                "line": 115
+            },
+            "modifiers": [],
+            "name": "lps",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 34,
+                "line": 122
+            },
+            "modifiers": [],
+            "name": "lp",
+            "references": [],
+            "type": "Lunch_Participant__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 61,
+                "line": 134
+            },
+            "modifiers": [],
+            "name": "userId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 76,
+                "line": 134
+            },
+            "modifiers": [],
+            "name": "lunchMeetup",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 137
+            },
+            "modifiers": [],
+            "name": "e",
+            "references": [],
+            "type": "Event"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 140
+            },
+            "modifiers": [],
+            "name": "er",
+            "references": [],
+            "type": "EventRelation"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 34,
+                "line": 142
+            },
+            "modifiers": [],
+            "name": "dlo",
+            "references": [],
+            "type": "DMLOptions"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 41,
+                "line": 149
+            },
+            "modifiers": [],
+            "name": "lpT",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 35,
+                "line": 158
+            },
+            "modifiers": [],
+            "name": "lp",
+            "references": [],
+            "type": "Lunch_Participant__c"
+        }
+    ]
+}

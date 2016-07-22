@@ -1,0 +1,17 @@
+{
+    "projectName": "Carrefour HR",
+    "username": "admin@carrefourhr.demo",
+    "id": "f97c5ba0-5019-11e6-9790-b3ef062db099",
+    "namespace": "",
+    "environment": "production",
+    "loginUrl": "https://login.salesforce.com/",
+    "workspace": "/Users/mserranocaldeiro/Documents/mavens_workspace",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "CustomObject",
+        "StaticResource"
+    ]
+}

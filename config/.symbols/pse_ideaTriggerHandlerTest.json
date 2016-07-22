@@ -1,0 +1,356 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJwAAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJwAAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 36
+            },
+            "modifiers": [
+                "private",
+                "static"
+            ],
+            "name": "initStep1",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 44
+            },
+            "modifiers": [
+                "private",
+                "static"
+            ],
+            "name": "initUCCtoPM",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 55
+            },
+            "modifiers": [
+                "private",
+                "static"
+            ],
+            "name": "initSubmitIdea",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 106
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "step1Test",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 130
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "UCCtoPMTest",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 156
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "submitIdeaTest",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "pse_ideaTriggerHandlerTest",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 25
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "idea",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 26
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "cat",
+            "references": [],
+            "type": "pse_Category__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 27
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "user1",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 28
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "user2",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 29
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "user3",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 45,
+                "line": 30
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "rule",
+            "references": [],
+            "type": "pse_Idea_Rules_Evaluation__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 30,
+                "line": 31
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_NYR",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 32
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_UCC",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 33
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_BR",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 30,
+                "line": 34
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_PM",
+            "references": [],
+            "type": "String"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [
+            {
+                "name": "IsTest"
+            }
+        ],
+        "location": {
+            "column": 15,
+            "line": 23
+        },
+        "modifiers": [
+            "private",
+            "testMethod"
+        ],
+        "name": "pse_ideaTriggerHandlerTest",
+        "references": [],
+        "type": "pse_ideaTriggerHandlerTest"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 9,
+                "line": 69
+            },
+            "modifiers": [],
+            "name": "startDate",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 9,
+                "line": 73
+            },
+            "modifiers": [],
+            "name": "endDate",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 15,
+                "line": 118
+            },
+            "modifiers": [],
+            "name": "idea1",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 140
+            },
+            "modifiers": [],
+            "name": "project",
+            "references": [],
+            "type": "pse_Projects__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 169
+            },
+            "modifiers": [],
+            "name": "idea1",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 31,
+                "line": 172
+            },
+            "modifiers": [],
+            "name": "underConsideration",
+            "references": [],
+            "type": "pse_Under_Consideration__c"
+        }
+    ]
+}

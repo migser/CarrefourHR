@@ -1,0 +1,43 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjIwAAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjIwAAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 17,
+                "line": 3
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "getEmployeeTasks",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "TaskController",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 14,
+            "line": 1
+        },
+        "modifiers": [
+            "public"
+        ],
+        "name": "TaskController",
+        "references": [],
+        "type": "TaskController"
+    },
+    "variables": []
+}

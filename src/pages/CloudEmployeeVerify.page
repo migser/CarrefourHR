@@ -1,0 +1,63 @@
+<apex:page standardController="Contact" tabstyle="Case" extensions="CloudEmployeeVerifyFlow" showHeader="false" sidebar="false">
+    <apex:includeScript value="/support/console/22.0/integration.js"/>
+    <script type="text/javascript">
+    
+ 
+        function openSubtabs() {
+            var openSubtabsFunction =
+                function openSubtabsFunction(result) {
+                    if ("{!caseID}" !== "") {
+                        sforce.console.openSubtab(result.id,'/{!caseID}',false,'Case: {!caseNumber}'); 
+
+                    }
+                }
+            sforce.console.getEnclosingPrimaryTabId(openSubtabsFunction);
+        }
+        function testCloseTab() {
+            //First find the ID of the current tab to close it
+            sforce.console.getEnclosingTabId(closeSubtab);
+        }
+        var closeSubtab = function closeSubtab(result) {
+            //Now that we've got the tab ID, we can close it
+            var tabId = result.id;
+            sforce.console.closeTab(tabId);
+        };
+        function defaultTabTitle() {
+            //Set the current tab's title
+            sforce.console.setTabTitle('Verify Employee');
+        }
+        var pageLoad = window.onload;        
+            window.onload = function() { 
+            if (pageLoad) { 
+                pageLoad();
+            }
+        //    defaultTabTitle();
+        }
+        
+    </script>
+    <style>.bPageBlock .detailList .dataCol {width:80%;}</style>
+    <table width="100%">
+        <tr>
+            <td width="65%" valign="top">
+            <br/> 
+            <Center><Font size ="6" color ="gold">Verify Employee First</font></Center> 
+            <br/><br/> 
+                <flow:interview name="Caller_Verification" interview="{!theInterview}" finishLocation="{!finishLocation}">
+                  <apex:param name="v_employeeID" value="{!Contact.Id}"/>
+ <!--                   <apex:param name="finishlocation" value="{!var_FinishLocation}"/>
+            <apex:param name="AgentFirstName" value="{!$User.FirstName}"/>
+-->                    
+                </flow:interview>
+            </td>
+            <td width="35%" valign="top">
+            <div style="margin-top: 8px;">
+                <iframe name="sideframe" id="sideframe"
+                        src="/apex/CloudFlowKBFrame?id={!Contact.Id}&subject={!searchString}&dim1={!firstDim}&dim2={!secondDim}&dim3={!thirdDim}"
+                        frameborder="0" width="100%" height="500px"
+                        onload="openSubtabs()">
+                </iframe>
+            </div>
+            </td>
+        </tr>
+    </table>
+</apex:page>

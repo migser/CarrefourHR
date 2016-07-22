@@ -1,0 +1,8 @@
+<apex:page controller="PSE_Setup_Pulse_Check">
+    <apex:form >
+        <apex:pageBlock title="Setup Demo Data for Pulse Check">
+            <apex:commandButton action="{!createSampleData}" value="Create Sample Data"/>
+            <apex:commandButton action="{!deleteData}" value="Delete all Employee Feedbacks and Projects"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

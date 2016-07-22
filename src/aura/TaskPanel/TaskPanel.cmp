@@ -1,0 +1,39 @@
+<aura:component implements="force:appHostable"  controller="OnboardingTaskController">
+    <aura:attribute name="hideTask" type="Boolean" default="true" />
+    <aura:attribute name="task" type="TaskWrapper" />
+    <aura:attribute name="incompleteTasks" type="Task[]" />
+    <ul class="slds-has-cards--space has-selections slds-m-bottom--medium">
+        <li class="slds-list__item">
+            <div class="slds-tile slds-tile--board" style="text-align: center">
+                <p class="slds-tile__title slds-truncate"></p>
+                <div class="slds-tile__detail">
+                    <p class="slds-text-heading--large slds-m-bottom--x-large">{!v.task.header}</p>
+                    <p class="slds-text-heading--medium">
+                        <span class="slds-m-right--xx-small">{!v.task.completeCount}</span>
+                        <span class="slds-icon_container slds-m-right--xx-large">
+                            <c:svg class="slds-icon slds-icon-standard-task slds-timeline__icon" xlinkHref="/resource/SLDS100/assets/icons/standard-sprite/svg/symbols.svg#task2" />
+                        </span>
+                        <span class="slds-m-right--xx-small">{!v.task.incompleteCount}</span>
+                        <span class="slds-icon_container">
+                            <c:svg class="slds-icon slds-icon-action-close slds-timeline__icon" xlinkHref="/resource/SLDS100/assets/icons/action-sprite/svg/symbols.svg#close" />
+                        </span>
+                    </p>
+                    <p class="slds-text-heading--medium slds-m-top--medium">
+                        Days Remaining: {!v.task.daysRemaining}
+                    </p>
+                </div>          
+                <hr class="slds-m-bottom--x-small" />
+                <aura:if isTrue="{!v.hideTask}">
+                    <button class="slds-button slds-button--neutral slds-not-selected" aria-live="assertive" onclick="{!c.handleShowTaskClick}" >Show Incomplete Tasks</button>
+                    <aura:set attribute="else">
+                        <ul class="slds-list--vertical">
+                            <aura:iteration items="{!v.incompleteTasks}" var="tsk">
+                                <li class="slds-list__item"><button data-data="{!tsk.Id}" onclick="{!c.navigateToTask}" class="slds-button">{!tsk.Subject}</button></li>
+                            </aura:iteration>
+                        </ul>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </li>
+    </ul>
+</aura:component>

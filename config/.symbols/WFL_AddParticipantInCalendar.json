@@ -1,0 +1,133 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJ7AAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJ7AAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 30,
+                "line": 3
+            },
+            "modifiers": [
+                "static",
+                "webService",
+                "global"
+            ],
+            "name": "addParticipant",
+            "parameters": [
+                {
+                    "name": "userId",
+                    "type": "String"
+                },
+                {
+                    "name": "lunchMeetup",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "String",
+            "type": null
+        }
+    ],
+    "name": "WFL_AddParticipantInCalendar",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 27,
+            "line": 1
+        },
+        "modifiers": [
+            "global",
+            "with sharing"
+        ],
+        "name": "WFL_AddParticipantInCalendar",
+        "references": [],
+        "type": "WFL_AddParticipantInCalendar"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 52,
+                "line": 3
+            },
+            "modifiers": [],
+            "name": "userId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 67,
+                "line": 3
+            },
+            "modifiers": [],
+            "name": "lunchMeetup",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 6
+            },
+            "modifiers": [],
+            "name": "e",
+            "references": [],
+            "type": "Event"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 41,
+                "line": 10
+            },
+            "modifiers": [],
+            "name": "lpT",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 18
+            },
+            "modifiers": [],
+            "name": "er",
+            "references": [],
+            "type": "EventRelation"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 34,
+                "line": 20
+            },
+            "modifiers": [],
+            "name": "dlo",
+            "references": [],
+            "type": "DMLOptions"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 35,
+                "line": 27
+            },
+            "modifiers": [],
+            "name": "lp",
+            "references": [],
+            "type": "Lunch_Participant__c"
+        }
+    ]
+}

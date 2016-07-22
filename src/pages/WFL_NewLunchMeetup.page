@@ -1,0 +1,324 @@
+<apex:page controller="WFL_NewLunchMeetup" showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+        
+        <head>
+            <title>What's for Lunch</title>
+            <apex:stylesheet value="{!URLFOR($Resource.WFL_SLDS0101, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+            <apex:includeScript value="{!URLFOR($Resource.wfl_jquery)}"/>
+            <apex:includeScript value="{!URLFOR($Resource.wfljquerytimepickerJS)}"/>
+            <apex:stylesheet value="{!URLFOR($Resource.wfljquerytimepicker)}"/>
+            
+            <style> 
+                .slds-list__item2 {
+                padding: 8px;
+                border-radius: 4px;
+                background-clip: padding-box;
+                border: 1px solid rgb(216, 221, 230);
+                }
+                
+                .slds-list__item2:hover {
+                background-color: #f4f6f9;
+                border-color: #d8dde6;
+                }
+                
+                .slds-list__item2 + .slds-list__item2 {
+                margin-top: 8px;
+                }
+                
+                .slds .slds-radio2 {
+                display: block;
+                }
+                
+                .slds .slds-radio2 .slds-form-element__label {
+                display: inline;
+                vertical-align: middle;
+                font-size: 14px;
+                }
+                
+                .slds .slds-radio2 input[type=radio]:checked {  
+                background-color: #1589ee;   
+                }
+                
+                .slds .slds-radio2 input[type=radio] {
+                vertical-align: middle;
+                border: 1px solid #d8dde6;
+                border-radius: 50%;
+                cursor: pointer;
+                height: 15px;
+                margin-right: 3px;
+                width: 15px;
+                outline: 0;      
+                -webkit-appearance: none;  
+                }
+                
+                .slds .slds-form-element__help {
+                display:none!important;
+                }
+                
+                .slds .slds-has-error .slds-input {
+                background-color: #fff;
+                border-color: #c23934;
+                box-shadow: #c23934 0 0 0 1px inset;
+                background-clip: padding-box;
+                }
+                
+                .slds .slds-has-error .slds-select {
+                background-color: #fff;
+                border-color: #c23934;
+                box-shadow: #c23934 0 0 0 1px inset;
+                background-clip: padding-box;
+                }
+                
+                .slds .slds-has-error .slds-form-element__help  {
+                color: #c23934;
+                display:block!important;
+                }
+                
+                .slds-is-required>.slds-form-element__label:before {
+                content: '*';
+                color: #c23934;
+                position: absolute;
+                left: -0.5rem;
+                }        
+            </style>
+            <script>
+            function navigateTo(url) {
+                $('#spinner').show();
+                if ((typeof(sforce) != 'undefined') && (sforce.one != null)) {
+                    sforce.one.navigateToURL(url, true);
+                } else {
+                    window.open(url, '_top');
+                }
+            }
+            
+            $(loadForms);
+			function loadForms() {
+                loadNextLunchDate();
+                $('#dateDiv').show();
+                
+                $('#lunch_start_time').timepicker({
+                	timeFormat: 'HH:mm:ss',
+                    interval: 15,
+                    minTime: '11:00:00',
+                    maxTime: '16:00:00'
+                });
+                $('#lunch_end_time').timepicker({
+                	timeFormat: 'HH:mm:ss',
+                    interval: 15,                    
+                    minTime: '11:00:00',
+                    maxTime: '16:00:00'
+                });
+            }
+            
+            function loadNextLunchDate() {
+                var myDiv = $('#selectToFillInForDates');
+                
+                var currentDate = new Date();
+                var tomorrowDate = new Date(currentDate.getTime() + 86400000);
+                var aftertomorrowDate = new Date(tomorrowDate.getTime() + 86400000);
+                
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.WFL_NewLunchMeetup.getDates}',
+                    function(result, event) {
+                        if (result == null || result == '')
+                            return;
+                        
+                        var str = '';
+                        str += '<select id="lunch_date" class="slds-select">';
+                        for (index = 0; index < result.length; ++index)
+                            str += '<option>' + result[index] + '</option>';
+                        str += '</select>';
+                        
+                        myDiv.append(str);
+                        myDiv.show();
+                    });
+            }
+            
+            function scroll2Top() {
+                if ($('#alertDialog').hasClass('slds-hide')) {
+                    $('#pageHeader')[0].scrollIntoView();
+                } else {
+                    $('#alertDialog')[0].scrollIntoView();
+                }
+            }
+            
+            function showError(message) {
+                $('#alertDialogMessage').html(message);
+                $('#alertDialog').removeClass('slds-hide');
+                scroll2Top();
+            }
+            
+            function submitNewLunchForm() {
+                console.log('Submitting form');
+                hideError();
+                $(document.activeElement).blur();
+                
+                if (validate(document.getElementById('dateDiv'))) {
+                    args = {
+                        lunch_name: $('#lunch_name').val(),
+                        location: $('#lunch_location').val(),
+                        startTime: $('#lunch_start_time').val(),
+                        endTime: $('#lunch_end_time').val(),
+                        typeOfLunch: $('#typeOfLunchLocation').val(),
+                        lunchDate: $('#lunch_date').val()
+                    };
+                    
+                    $('#spinner').show();
+    				console.log('Sending to server');
+                    Visualforce.remoting.Manager.invokeAction(
+                        '{!$RemoteAction.WFL_NewLunchMeetup.createLunchMeetup}',
+                        args, 
+                        function(result, event) {
+                            if(event.type === 'exception') {
+                                console.log(event);
+                                showError('Error: ' + event.result);
+                            } else if (event.status) {
+                                if (result.result === 'OK') {
+                                    $('#spinner').hide();
+                                    navigateTo('{!$Page.WFL_Lunch}?lunchId=' + result.lunchId);
+                                } else {
+                                    console.log(event.result);
+                                    showError('Error: ' + event.result.message);
+                                }
+                            }
+    
+                            $('#spinner').hide();
+                        }
+                    );
+                }
+                else
+	                console.log('Error');
+            }
+            
+            function hideError() {
+                $('#alertDialogMessage').html('');
+                $('#alertDialog').addClass('slds-hide');
+            }
+
+            function validate(element) {
+                var valid = true;            
+                
+                if (element.nodeName == 'INPUT' || element.nodeName == 'SELECT') {
+                    var input = element;
+                    if (input.type == 'text' || element.nodeName == 'SELECT') {
+                        valid = !(input.required && input.value == '');
+                    }
+                    if (valid) {
+                        $(input).closest('div .slds-form-element').removeClass('slds-has-error');
+                    } else {
+                        $(input).closest('div .slds-form-element').addClass('slds-has-error');
+                    }
+                }
+                else if (element.nodeName == 'DIV') {
+                    $(element).find('input').each(function() {
+                        valid &= validate(this);
+                    });
+                }
+                return valid;
+            }
+            </script>
+        </head>
+        <body style="padding: 1px; overflow:visible;"> 
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds" id="slds-wrapper">   
+                <!-- SPINNER OVERLAY -->
+                <div id="spinner" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; display:none; background-color:rgba(0,0,0,.7);">
+                    <div class="slds-spinner--medium" style="top: 50%; left: 50%; position: relative; margin-top: -28px; margin-left: -28px;">
+                        <img alt="Working..." src="{!URLFOR($Resource.WFL_SLDS0101, 'assets/images/spinners/slds_spinner_inverse.gif')}" />
+                    </div>
+                </div>
+                <!-- / SPINNER OVERLAY -->
+                
+                <!-- MESSAGE ALERT -->
+                <div id="alertDialog" class="slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture slds-hide slds-m-bottom--small" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="hideError();">
+                        <svg aria-hidden="true" class="slds-button__icon">
+                            <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>          
+                    <h2 id="alertDialogMessage">
+                        <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small" style="float: left">
+                            <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/utility-sprite/svg/symbols.svg#ban')}"></use>
+                        </svg>
+                        Base System Alert
+                    </h2>
+                </div>
+                <!-- / MESSAGE ALERT -->
+                
+                <!-- HEADER -->
+                <div class="slds-page-header" id="pageHeader">    
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <img src="{!URLFOR($Resource.wfl_logo)}" alt="Logo" width="48px" onclick="navigateTo('{!$Page.WFL_HomePage}');" style="cursor: pointer"/>
+                        </div>
+        
+                        <div class="slds-media__body">
+                            <div class="slds-text-heading--label">What's for Lunch</div>
+                            <p class="slds-text-heading--medium" id="formTitle">New Lunch Meetup</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- / HEADER -->
+                
+                <div id="dateDiv" class="slds-hide" style="margin: 10px;">
+                    <div class="slds-text-heading--small">You're not found of Today's menu?<br/>You can organise a lunch meetup with your colleagues!</div>
+                    <div class="slds-form slds-m-top--medium">
+                        <div class="slds-form-element slds-is-required" id="geosDiv">
+                            <label class="slds-form-element__label" for="geo">Select an available date (if no dates appear, go to the Chatter Group):</label>
+                            <div class="slds-form-element__control" id="selectToFillInForDates"/>
+                        </div>
+                        <div class="slds-form-element slds-is-required" id="geosDiv">
+                            <label class="slds-form-element__label" for="geo">Lunch Name:</label>
+                            <div class="slds-form-element__control">
+                                <input id="lunch_name" class="slds-input" type="text" placeholder="Enter Lunch name" required="true" />
+                                <span id="error_name" class="slds-form-element__help">Lunch name is required</span>
+                            </div>
+                        </div>
+                        <div class="slds-form-element" id="geosDiv">
+                            <label class="slds-form-element__label" for="geo">Lunch Location:</label>
+                            <div class="slds-form-element__control">
+                                <input id="lunch_location" class="slds-input" type="text" placeholder="Enter Location" required="false" />                                
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-is-required" id="geosDiv">
+                            <label class="slds-form-element__label" for="geo">Start Time:</label>
+                            <div class="slds-form-element__control">
+                                <input id="lunch_start_time" class="slds-input" type="text" placeholder="Start time" required="true" />
+                                <span id="error_start_time" class="slds-form-element__help">Start time is required</span>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-is-required" id="geosDiv">
+                            <label class="slds-form-element__label" for="geo">End Time:</label>
+                            <div class="slds-form-element__control">
+                                <input id="lunch_end_time" class="slds-input" type="text" placeholder="End time" required="true" />
+                                <span id="error_end_time" class="slds-form-element__help">End time is required</span>
+                            </div>
+                        </div> 
+                        <div class="slds-form-element slds-m-top--medium">
+                            <label class="slds-form-element__label" for="geo">Select Type:</label>
+                            <div class="slds-form-element__control">
+                                <select id="typeOfLunchLocation" class="slds-select">
+                                    <option disabled='disabled' selected='true'></option>
+                                    <apex:repeat value="{!typeOfLunchMeetup}" var="r">
+                                        <option value="{!r.value}">{!r.label}</option>
+                                    </apex:repeat>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='slds-m-top--medium' style='text-align:center'>
+                        <button class="slds-button slds-button--neutral" onclick="submitNewLunchForm();" style="width: 120px">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">
+                                <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/utility-sprite/svg/symbols.svg#link')}"></use>
+                            </svg>
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- / REQUIRED SLDS WRAPPER -->
+        </body>
+    </html>
+</apex:page>

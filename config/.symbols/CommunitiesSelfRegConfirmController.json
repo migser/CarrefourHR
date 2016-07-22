@@ -1,0 +1,43 @@
+{
+    "constructors": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 6
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "CommunitiesSelfRegConfirmController",
+            "parameters": [],
+            "references": [],
+            "type": null
+        }
+    ],
+    "externalReferences": [],
+    "id": "01p50000002BjJoAAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJoAAK",
+    "methods": [],
+    "name": "CommunitiesSelfRegConfirmController",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 27,
+            "line": 4
+        },
+        "modifiers": [
+            "public",
+            "with sharing"
+        ],
+        "name": "CommunitiesSelfRegConfirmController",
+        "references": [],
+        "type": "CommunitiesSelfRegConfirmController"
+    },
+    "variables": []
+}

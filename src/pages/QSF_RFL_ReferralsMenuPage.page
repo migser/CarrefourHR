@@ -1,0 +1,92 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+
+<head>
+  <title>Employee Referral Programme Menu</title>
+  <apex:stylesheet value="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+  <apex:includeScript value="{!URLFOR($Resource.QSF_RFL_jQuery_js)}"/>
+  
+  <style>
+      #spinner {
+        width: 100%; 
+        height: 100%; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        z-index: 10; 
+        background-color:rgba(0,0,0,.7);      
+      }
+      
+      .navButtonDiv {
+          width:100%; 
+          padding: 30px 20px 0px 20px; 
+          text-align: center;
+      }
+      
+      .navButton {
+          min-width: 200px; 
+          min-height: 50px;
+      }
+  </style>
+  <script>
+    function navigateTo(url) {
+        $('#spinner').show();
+        if ((typeof(sforce) != 'undefined') && (sforce.one != null)) {
+            sforce.one.navigateToURL(url, true);
+        } else {
+            window.open(url, '_top');
+        }
+    }  
+  </script>
+</head>    
+
+<body>    
+
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="slds">    
+
+    <!-- MASTHEAD -->
+    <div class="slds-page-header slds-text-align--center" role="banner">    
+        <span class="slds-icon__container--circle">
+          <img src="{!URLFOR($Resource.QSF_RFL_Resources, 'blue_logo.png')}" alt="Logo" width="150px"/>
+        </span>
+        <p class="slds-text-heading--medium">
+            <span>Employee Referral Programme</span>
+        </p>
+    </div>
+        
+    <!-- / MASTHEAD -->    
+    <div id="spinner" class="slds-hide">
+        <div class="slds-spinner--medium" style="top: 50%;left: 50%;position: relative;margin-top: -28px;margin-left: -28px;">
+            <img alt="Loading..." src="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/images/spinners/slds_spinner_inverse.gif')}" />
+        </div>        
+    </div>
+
+    <!-- BUTTONS -->
+    <div style="padding-top: 20px">
+        <div class="navButtonDiv">
+            <button class="slds-button slds-button--brand navButton" onclick="navigateTo('{!URLFOR($Page.QSF_RFL_NewReferralPage)}');"> 
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                    <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#announcement')}"></use>
+                </svg>
+                Refer A Friend
+            </button>
+        </div>
+        
+        <div class="navButtonDiv">
+            <button class="slds-button slds-button--brand navButton" onclick="navigateTo('{!URLFOR($Page.QSF_RFL_ReferralListPage)}');"> 
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                    <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#groups')}"></use>
+                </svg>
+                My Referrals
+            </button>
+        </div>      
+    </div>
+    <!-- / BUTTONS -->      
+  </div>
+  <!-- / REQUIRED SLDS WRAPPER -->    
+
+</body>
+</html>
+</apex:page>

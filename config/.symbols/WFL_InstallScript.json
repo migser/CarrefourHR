@@ -1,0 +1,84 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJ3AAK",
+    "innerClasses": [],
+    "interfaces": [
+        "System.InstallHandler"
+    ],
+    "key": "01p50000002BjJ3AAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 17,
+                "line": 3
+            },
+            "modifiers": [
+                "global"
+            ],
+            "name": "onInstall",
+            "parameters": [
+                {
+                    "name": "context",
+                    "type": "InstallContext"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "WFL_InstallScript",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 14,
+            "line": 1
+        },
+        "modifiers": [
+            "global"
+        ],
+        "name": "WFL_InstallScript",
+        "references": [],
+        "type": "WFL_InstallScript"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 42,
+                "line": 3
+            },
+            "modifiers": [],
+            "name": "context",
+            "references": [],
+            "type": "InstallContext"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 38,
+                "line": 6
+            },
+            "modifiers": [],
+            "name": "myGroups",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 14
+            },
+            "modifiers": [],
+            "name": "myGroup",
+            "references": [],
+            "type": "CollaborationGroup"
+        }
+    ]
+}

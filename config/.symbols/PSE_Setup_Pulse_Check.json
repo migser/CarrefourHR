@@ -1,0 +1,440 @@
+{
+    "constructors": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 32
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "PSE_Setup_Pulse_Check",
+            "parameters": [],
+            "references": [],
+            "type": null
+        }
+    ],
+    "externalReferences": [],
+    "id": "01p50000002BjJ0AAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJ0AAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 43
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "createSampleData",
+            "parameters": [],
+            "references": [],
+            "returnType": "PageReference",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 125
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "deleteData",
+            "parameters": [],
+            "references": [],
+            "returnType": "PageReference",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 2
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "listView",
+            "parameters": [
+                {
+                    "name": "destinationSObject",
+                    "type": "SObjectType"
+                }
+            ],
+            "references": [],
+            "returnType": "PageReference",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 27,
+                "line": 18
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "rand",
+            "parameters": [
+                {
+                    "name": "max",
+                    "type": "Integer"
+                }
+            ],
+            "references": [],
+            "returnType": "Integer",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 27,
+                "line": 21
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "randBoolean",
+            "parameters": [],
+            "references": [],
+            "returnType": "Boolean",
+            "type": null
+        }
+    ],
+    "name": "PSE_Setup_Pulse_Check",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 25
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "numOfProjects",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 26
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "numOfFeedbacks",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 28
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "projectNames",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 29
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "priorities",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 30
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "reqEff",
+            "references": [],
+            "type": "LIST"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 14,
+            "line": 1
+        },
+        "modifiers": [
+            "public"
+        ],
+        "name": "PSE_Setup_Pulse_Check",
+        "references": [],
+        "type": "PSE_Setup_Pulse_Check"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 35
+            },
+            "modifiers": [],
+            "name": "projectNamesString",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 46
+            },
+            "modifiers": [],
+            "name": "rtProject",
+            "references": [],
+            "type": "RecordType"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 51
+            },
+            "modifiers": [],
+            "name": "rtWork",
+            "references": [],
+            "type": "RecordType"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 37,
+                "line": 60
+            },
+            "modifiers": [],
+            "name": "projects",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 61
+            },
+            "modifiers": [],
+            "name": "users",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 63
+            },
+            "modifiers": [],
+            "name": "i",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 64
+            },
+            "modifiers": [],
+            "name": "userIndex",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 65
+            },
+            "modifiers": [],
+            "name": "projectManager",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 66
+            },
+            "modifiers": [],
+            "name": "priorityIndex",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 67
+            },
+            "modifiers": [],
+            "name": "priority",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 39,
+                "line": 69
+            },
+            "modifiers": [],
+            "name": "p",
+            "references": [],
+            "type": "PSE_PulseCheck_Project__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 36,
+                "line": 81
+            },
+            "modifiers": [],
+            "name": "feedbacks",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 83
+            },
+            "modifiers": [],
+            "name": "i",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 84
+            },
+            "modifiers": [],
+            "name": "userIndex",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 85
+            },
+            "modifiers": [],
+            "name": "employee",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 38,
+                "line": 87
+            },
+            "modifiers": [],
+            "name": "feedback",
+            "references": [],
+            "type": "PSE_Employee_Feedback__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 40,
+                "line": 126
+            },
+            "modifiers": [],
+            "name": "feedbacks",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 41,
+                "line": 129
+            },
+            "modifiers": [],
+            "name": "projects",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 61,
+                "line": 2
+            },
+            "modifiers": [],
+            "name": "destinationSObject",
+            "references": [],
+            "type": "SObjectType"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 38,
+                "line": 3
+            },
+            "modifiers": [],
+            "name": "destination",
+            "references": [],
+            "type": "DescribeSObjectResult"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 4
+            },
+            "modifiers": [],
+            "name": "pageRef",
+            "references": [],
+            "type": "PageReference"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 40,
+                "line": 18
+            },
+            "modifiers": [],
+            "name": "max",
+            "references": [],
+            "type": "Integer"
+        }
+    ]
+}

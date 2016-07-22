@@ -1,0 +1,516 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjIzAAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjIzAAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 4
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "followApplication",
+            "parameters": [
+                {
+                    "name": "referral",
+                    "type": "QSF_RFL_Referral__c"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 9
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "shareApplicationWithReferrer",
+            "parameters": [
+                {
+                    "name": "referral",
+                    "type": "QSF_RFL_Referral__c"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 19
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "notifyHiringManager",
+            "parameters": [
+                {
+                    "name": "applicationId",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 54
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "notifyReferrerOnSelection",
+            "parameters": [
+                {
+                    "name": "referralId",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 66
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "thankReferrer",
+            "parameters": [
+                {
+                    "name": "referralId",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 78
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "postToReferrer",
+            "parameters": [
+                {
+                    "name": "referral",
+                    "type": "QSF_RFL_Referral__c"
+                },
+                {
+                    "name": "text",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "QSF_RFL_ReferralProgramServices",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 2
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "MENTION_TOKEN",
+            "references": [],
+            "type": "String"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 14,
+            "line": 1
+        },
+        "modifiers": [
+            "public"
+        ],
+        "name": "QSF_RFL_ReferralProgramServices",
+        "references": [],
+        "type": "QSF_RFL_ReferralProgramServices"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 62,
+                "line": 4
+            },
+            "modifiers": [],
+            "name": "referral",
+            "references": [],
+            "type": "QSF_RFL_Referral__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 73,
+                "line": 9
+            },
+            "modifiers": [],
+            "name": "referral",
+            "references": [],
+            "type": "QSF_RFL_Referral__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 36,
+                "line": 11
+            },
+            "modifiers": [],
+            "name": "appShr",
+            "references": [],
+            "type": "QSF_RFL_Application__Share"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 51,
+                "line": 19
+            },
+            "modifiers": [],
+            "name": "applicationId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 20
+            },
+            "modifiers": [],
+            "name": "application",
+            "references": [],
+            "type": "QSF_RFL_Application__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 41,
+                "line": 27
+            },
+            "modifiers": [],
+            "name": "body",
+            "references": [],
+            "type": "MessageBodyInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 41,
+                "line": 30
+            },
+            "modifiers": [],
+            "name": "textSegment1",
+            "references": [],
+            "type": "TextSegmentInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 31
+            },
+            "modifiers": [],
+            "name": "text",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 38,
+                "line": 36
+            },
+            "modifiers": [],
+            "name": "feedItemInput",
+            "references": [],
+            "type": "FeedItemInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 44,
+                "line": 42
+            },
+            "modifiers": [],
+            "name": "linkInput",
+            "references": [],
+            "type": "LinkCapabilityInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 53,
+                "line": 46
+            },
+            "modifiers": [],
+            "name": "capabilities",
+            "references": [],
+            "type": "FeedElementCapabilitiesInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 36,
+                "line": 50
+            },
+            "modifiers": [],
+            "name": "feedElement",
+            "references": [],
+            "type": "FeedElement"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 57,
+                "line": 54
+            },
+            "modifiers": [],
+            "name": "referralId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 55
+            },
+            "modifiers": [],
+            "name": "referral",
+            "references": [],
+            "type": "QSF_RFL_Referral__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 10,
+                "line": 60
+            },
+            "modifiers": [],
+            "name": "text",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 45,
+                "line": 66
+            },
+            "modifiers": [],
+            "name": "referralId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 67
+            },
+            "modifiers": [],
+            "name": "referral",
+            "references": [],
+            "type": "QSF_RFL_Referral__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 72
+            },
+            "modifiers": [],
+            "name": "text",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 59,
+                "line": 78
+            },
+            "modifiers": [],
+            "name": "referral",
+            "references": [],
+            "type": "QSF_RFL_Referral__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 76,
+                "line": 78
+            },
+            "modifiers": [],
+            "name": "text",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 79
+            },
+            "modifiers": [],
+            "name": "comps",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 80
+            },
+            "modifiers": [],
+            "name": "prefix",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 81
+            },
+            "modifiers": [],
+            "name": "suffix",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 37,
+                "line": 83
+            },
+            "modifiers": [],
+            "name": "body",
+            "references": [],
+            "type": "MessageBodyInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 37,
+                "line": 86
+            },
+            "modifiers": [],
+            "name": "textSegment1",
+            "references": [],
+            "type": "TextSegmentInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 40,
+                "line": 90
+            },
+            "modifiers": [],
+            "name": "mentionSegment",
+            "references": [],
+            "type": "MentionSegmentInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 37,
+                "line": 94
+            },
+            "modifiers": [],
+            "name": "textSegment2",
+            "references": [],
+            "type": "TextSegmentInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 34,
+                "line": 98
+            },
+            "modifiers": [],
+            "name": "feedItemInput",
+            "references": [],
+            "type": "FeedItemInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 40,
+                "line": 104
+            },
+            "modifiers": [],
+            "name": "linkInput",
+            "references": [],
+            "type": "LinkCapabilityInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 49,
+                "line": 108
+            },
+            "modifiers": [],
+            "name": "capabilities",
+            "references": [],
+            "type": "FeedElementCapabilitiesInput"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 112
+            },
+            "modifiers": [],
+            "name": "feedElement",
+            "references": [],
+            "type": "FeedElement"
+        }
+    ]
+}

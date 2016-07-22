@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Rules to decide :
+ - how many points are required to submit ideas to the innovation committee
+ - who and how many approvers are required based on the innovation type (breakthrough, incremental, etc)</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>pse_Approver_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Name of first approver.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of first approver.</inlineHelpText>
+        <label>Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Idea_Rules_Evaluation</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>pse_Approver_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Name of second approver.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of second approver.</inlineHelpText>
+        <label>Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Idea_Rules_Evaluation1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>pse_Approver_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Name of third approver.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of third approver.</inlineHelpText>
+        <label>Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Idea_Rules_Evaluation2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>pse_Criteria__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASESAFEID(pse_Innovation_Category__c) + &quot;:&quot; + TEXT(pse_Points__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Criteria</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>pse_Innovation_Category__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Category of Innovation as defined by the users on the Category Object.</description>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <referenceTo>pse_Category__c</referenceTo>
+        <relationshipLabel>Idea Rules Evaluation</relationshipLabel>
+        <relationshipName>Idea_Rules_Evaluation</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>pse_Pain_Point__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Paint point or challenge to be solved by the idea.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Paint point or challenge to be solved by the idea.</inlineHelpText>
+        <label>Pain Point</label>
+        <referenceTo>pse_Pain_Point__c</referenceTo>
+        <relationshipLabel>Idea Rules Evaluation</relationshipLabel>
+        <relationshipName>Idea_Rules_Evaluation</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>pse_Points__c</fullName>
+        <description>Number of points required to submit ideas automatcally to the Innovation Committee.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of points required to submit ideas automatcally to the Innovation Committee.</inlineHelpText>
+        <label>Points</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <gender>Feminine</gender>
+    <label>Idea Rule Evaluation</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>pse_Innovation_Category__c</columns>
+        <columns>pse_Criteria__c</columns>
+        <columns>pse_Points__c</columns>
+        <columns>pse_Pain_Point__c</columns>
+        <columns>pse_Approver_1__c</columns>
+        <columns>pse_Approver_2__c</columns>
+        <columns>pse_Approver_3__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>RULE-{0000}</displayFormat>
+        <label>Idea Rules Evaluation Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Idea Rules Evaluation</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>pse_Innovation_Category__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>pse_Pain_Point__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>pse_Points__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>pse_Approver_1__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>pse_Approver_2__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>pse_Approver_3__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

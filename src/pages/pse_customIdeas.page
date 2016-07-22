@@ -1,0 +1,169 @@
+<apex:page sidebar="true" standardStylesheets="true" showHeader="true" docType="html-5.0" standardController="pse_Idea__c" extensions="pse_customIdeasController" recordSetvar="ideas">
+
+  <head>
+  	<!-- Latest compiled and minified CSS -->
+
+	
+	<style>
+		normal {
+		    font-style: normal;
+		}
+		
+		italic {
+		    font-style: italic;
+		}
+		
+		oblique {
+		    font-style: oblique;
+		}
+		
+		title {
+		    font-style: bold;
+		    font-size: 20px;
+		    color: blue; 
+		}
+	
+		
+	</style>
+	
+	<script type="text/javascript">
+  
+        //function used to increment or decrement votes when thumb up or down buttons are pressed
+        //this function also updates the Vote Objet by calling remotely the voteHandler method on the controller
+	    function voteHandlerJS(id,flag) { 
+	    	//id is the Id of the idea being voted on
+	        //flag is used to figure out if we should increment or decrement votes
+	        
+	        Visualforce.remoting.Manager.invokeAction(
+	            '{!$RemoteAction.pse_customIdeasController.voteHandler}',
+	            id,flag,
+	            function(result, event){
+	                if (event.status) {
+	                	if(result) {
+	                    	// Get DOM IDs for HTML and Visualforce elements          			        
+           			        if(flag == "increment") {
+           			          var value = document.getElementById(id).innerHTML;
+           					  document.getElementById(id).innerHTML = Number(value) + 1;
+           					}
+           					else {
+           					  var value = document.getElementById(id + 'd').innerHTML;
+           					  document.getElementById(id + 'd').innerHTML = Number(value) - 1;
+           					}
+						}
+	                } 
+	                else if (event.type === 'exception') {
+	                  if(flag == "increment") {
+	                    document.getElementById(id).innerHTML =
+	                        event.message + "<br/>\n<pre>" + event.where + "</pre>";
+	                  }
+	                  else {
+	                    document.getElementById(id + 'd').innerHTML =
+	                        event.message + "<br/>\n<pre>" + event.where + "</pre>";
+	                  }
+	                } 
+	                else {
+	                  if(flag == "increment") {
+	                    document.getElementById(id).innerHTML = event.message;
+	                  }
+	                  else {//decrement case
+	                    document.getElementById(id + 'd').innerHTML = event.message;
+	                  }  
+					} 
+				},
+	            {escape: true}
+	        );
+		}
+		
+		
+	</script>
+
+  </head>
+  
+  <body>
+    <br></br><br></br>
+    <h1 style="font-size:160%">List of ideas</h1>
+    <br></br><br></br>
+    <apex:form >  
+      <apex:panelGrid columns="3">
+        <apex:outputLabel value="View:"/>
+          <apex:selectList value="{!filterId}" size="1">
+            <apex:actionSupport event="onchange" rerender="list"/>
+            <apex:selectOptions value="{!listviewoptions}"/>
+          </apex:selectList>
+          <apex:commandButton action="{!createIdea}" value="Create New Idea" /> 
+      </apex:panelGrid>
+    </apex:form>  
+    <br></br><br></br>
+  
+    <apex:pageBlock title="Read and vote for ideas">
+      <apex:pageBlockSection columns="1">
+ 
+	    <div class="container"> 
+		    <apex:dataTable value="{!ideas}" var="idea" id="list" styleClass="table table-striped" width="100%" cellpadding="5%">
+		     <apex:column >
+		       <apex:facet name="header">Title</apex:facet>
+		       
+  			   ￼<apex:outputLink value="{!domain}/{!idea.id}" style="font-style: bold; font-size: 14px ; color: blue">{!idea.pse_Title__c}</apex:outputLink> <br>
+		       <apex:outputText value="{!left(idea.pse_Idea_Body__c,400)} ..." style="font-size: 12px"/> </br>	       
+		       <apex:outputText value="Submitted by {!idea.pse_Submitted_By__c}" style="font-size: 12px; font-style: italic"/> <br>
+		       <apex:outputText value=" Age : {!idea.pse_Idea_Age__c} day(s)" style="font-size: 12px; font-style: italic"/> </br>
+		     </apex:column>
+		     <apex:column >
+		       <apex:facet name="header">Comments</apex:facet>
+		       <apex:outputText value="{!FLOOR(idea.pse_Number_of_Comments__c)}" style="font-size: 12px"/>
+		     </apex:column>
+		     <apex:column >
+		       <apex:facet name="header">Votes</apex:facet>
+		       <div class="row">
+		         <apex:form >
+		           <apex:commandButton image="{!URLFOR($Resource.logos,'inno/thumbsUp.png')}" onclick="voteHandlerJS('{!idea.id}', 'increment')" rerender="none">
+		             <!-- apex:param name="id" value="{!idea.id}" / -->
+		           </apex:commandButton>         
+		         </apex:form>
+		       </div>
+		       <div class="row">
+		         <span class="badge" id ="{!idea.id}">{!FLOOR(idea.pse_VotesUp__c)}</span>
+		       </div>   
+		     </apex:column>  
+		     
+		     <apex:column >
+		       <apex:facet name="header"></apex:facet>   
+		       <div class="row">
+		         <apex:form >
+		           <apex:commandButton image="{!URLFOR($Resource.logos,'inno/thumbsDown.png')}" onclick="voteHandlerJS('{!idea.id}', 'decrement')" rerender="none">
+		             <!-- apex:param name="id" value="{!idea.id}" / -->
+		           </apex:commandButton> 
+		         </apex:form>
+		       </div>
+		       <div class="row">
+		         <span class="badge" id ="{!idea.id + 'd'}">{!FLOOR(idea.pse_VotesDown__c)}</span>
+		       </div>               
+		     </apex:column>
+		       
+		     <apex:column >
+		       <apex:facet name="header">Status</apex:facet>
+		       <apex:outputText value="{!idea.pse_Status__c}" style="font-size: 12px"/>
+		     </apex:column>
+		     
+	        </apex:dataTable>	
+	     </div> 	
+       </apex:pageBlockSection> 
+	
+	 
+      
+      <apex:panelGrid columns="4" id="buttons">
+        <apex:form >
+          
+          <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!hasprevious}" action="{!First}" value="First"/>
+          <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!hasprevious}" action="{!Previous}" value="Previous"/>
+          <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!hasnext}" action="{!Next}" value="Next"/>
+          <apex:commandButton reRender="error,blocktable,buttons" disabled="{!!hasnext}" action="{!Last}" value="Last"/>
+        </apex:form>
+      </apex:panelGrid>
+      
+                
+    </apex:pageBlock> 
+
+
+  </body>        
+</apex:page>

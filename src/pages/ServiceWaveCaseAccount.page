@@ -1,0 +1,1 @@
+<apex:page standardController="case"> <wave:dashboard dashboardId="0FK50000000PMt0GAM" height="1000px" showTitle="false" filter="{'ServiceCase': {'AccountId.Id': ['{!case.AccountId}']}}" /></apex:page>

@@ -1,0 +1,43 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJqAAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJqAAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 2
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "doactionz",
+            "parameters": [],
+            "references": [],
+            "returnType": "PageReference",
+            "type": null
+        }
+    ],
+    "name": "logo",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 14,
+            "line": 1
+        },
+        "modifiers": [
+            "public"
+        ],
+        "name": "logo",
+        "references": [],
+        "type": "logo"
+    },
+    "variables": []
+}

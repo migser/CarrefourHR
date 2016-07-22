@@ -1,0 +1,176 @@
+{
+    "constructors": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 9
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "viewSurveyResultsComponentController",
+            "parameters": [],
+            "references": [],
+            "type": null
+        }
+    ],
+    "externalReferences": [],
+    "id": "01p50000002BjJOAA0",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJOAA0",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 17
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "getResults",
+            "parameters": [],
+            "references": [],
+            "returnType": "PageReference",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 32,
+                "line": 23
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "testMethod"
+            ],
+            "name": "testResultController",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "viewSurveyResultsComponentController",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 15,
+                "line": 3
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "surveyId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 15,
+                "line": 6
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "reportId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 7
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "results",
+            "references": [],
+            "type": "PageReference"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 27,
+            "line": 1
+        },
+        "modifiers": [
+            "public",
+            "with sharing"
+        ],
+        "name": "viewSurveyResultsComponentController",
+        "references": [],
+        "type": "viewSurveyResultsComponentController"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 11
+            },
+            "modifiers": [],
+            "name": "rfu",
+            "references": [],
+            "type": "ReportFinderUtil"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 15,
+                "line": 25
+            },
+            "modifiers": [],
+            "name": "mySurvey",
+            "references": [],
+            "type": "Survey__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 42,
+                "line": 29
+            },
+            "modifiers": [],
+            "name": "vsr",
+            "references": [],
+            "type": "viewSurveyResultsComponentController"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 32
+            },
+            "modifiers": [],
+            "name": "mySurveyId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 19,
+                "line": 33
+            },
+            "modifiers": [],
+            "name": "pageRef",
+            "references": [],
+            "type": "PageReference"
+        }
+    ]
+}

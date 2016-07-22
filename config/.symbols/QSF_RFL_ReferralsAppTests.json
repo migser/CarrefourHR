@@ -1,0 +1,488 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJrAAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJrAAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 17,
+                "line": 10
+            },
+            "modifiers": [
+                "private",
+                "static"
+            ],
+            "name": "init",
+            "parameters": [
+                {
+                    "name": "createReferral",
+                    "type": "Boolean"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 28,
+                "line": 95
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "testMethod"
+            ],
+            "name": "testApplicationSelectedTrigger",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 28,
+                "line": 106
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "testMethod"
+            ],
+            "name": "testNewApplicationTrigger",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 35,
+                "line": 131
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "testNewReferralController",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 28,
+                "line": 178
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "testMethod"
+            ],
+            "name": "testReferralListController",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "QSF_RFL_ReferralsAppTests",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 3
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "hiringManager",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 42,
+                "line": 4
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "skills",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 51,
+                "line": 5
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "requiredSkills",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 45,
+                "line": 6
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "positions",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 48,
+                "line": 7
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "applications",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 27,
+                "line": 8
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "contact",
+            "references": [],
+            "type": "Contact"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [
+            {
+                "name": "IsTest"
+            }
+        ],
+        "location": {
+            "column": 15,
+            "line": 2
+        },
+        "modifiers": [
+            "private",
+            "testMethod"
+        ],
+        "name": "QSF_RFL_ReferralsAppTests",
+        "references": [],
+        "type": "QSF_RFL_ReferralsAppTests"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 30,
+                "line": 10
+            },
+            "modifiers": [],
+            "name": "createReferral",
+            "references": [],
+            "type": "Boolean"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 31
+            },
+            "modifiers": [],
+            "name": "s1",
+            "references": [],
+            "type": "QSF_RFL_Skill__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 35
+            },
+            "modifiers": [],
+            "name": "s2",
+            "references": [],
+            "type": "QSF_RFL_Skill__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 41
+            },
+            "modifiers": [],
+            "name": "p1",
+            "references": [],
+            "type": "QSF_RFL_Position__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 52
+            },
+            "modifiers": [],
+            "name": "p2",
+            "references": [],
+            "type": "QSF_RFL_Position__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 35,
+                "line": 65
+            },
+            "modifiers": [],
+            "name": "rs1",
+            "references": [],
+            "type": "QSF_RFL_Required_Skill__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 35,
+                "line": 70
+            },
+            "modifiers": [],
+            "name": "rs2",
+            "references": [],
+            "type": "QSF_RFL_Required_Skill__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 36,
+                "line": 78
+            },
+            "modifiers": [],
+            "name": "app",
+            "references": [],
+            "type": "QSF_RFL_Application__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 85
+            },
+            "modifiers": [],
+            "name": "ref",
+            "references": [],
+            "type": "QSF_RFL_Referral__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 100
+            },
+            "modifiers": [],
+            "name": "position",
+            "references": [],
+            "type": "QSF_RFL_Position__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 110
+            },
+            "modifiers": [],
+            "name": "app1",
+            "references": [],
+            "type": "QSF_RFL_Application__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 42,
+                "line": 121
+            },
+            "modifiers": [],
+            "name": "cSkills",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 134
+            },
+            "modifiers": [],
+            "name": "pageRef",
+            "references": [],
+            "type": "PageReference"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 137
+            },
+            "modifiers": [],
+            "name": "cities",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 140
+            },
+            "modifiers": [],
+            "name": "ps",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 143
+            },
+            "modifiers": [],
+            "name": "position",
+            "references": [],
+            "type": "QSF_RFL_Position__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 146
+            },
+            "modifiers": [],
+            "name": "values",
+            "references": [],
+            "type": "Map"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 156
+            },
+            "modifiers": [],
+            "name": "res",
+            "references": [],
+            "type": "Map"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 158
+            },
+            "modifiers": [],
+            "name": "refId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 159
+            },
+            "modifiers": [],
+            "name": "appId",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 39,
+                "line": 162
+            },
+            "modifiers": [],
+            "name": "controller",
+            "references": [],
+            "type": "QSF_RFL_NewReferralController"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 49,
+                "line": 171
+            },
+            "modifiers": [],
+            "name": "atts",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 181
+            },
+            "modifiers": [],
+            "name": "pageRef",
+            "references": [],
+            "type": "PageReference"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 40,
+                "line": 183
+            },
+            "modifiers": [],
+            "name": "contrl",
+            "references": [],
+            "type": "QSF_RFL_ReferralListController"
+        }
+    ]
+}

@@ -1,0 +1,336 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJuAAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJuAAK",
+    "methods": [
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 4
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "testNewLunch",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 16
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "testCreateLunchMeetup",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 37
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "testNewLunchMeetupRemote",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 55
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "testGetParticipants",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 24,
+                "line": 80
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "testMethod"
+            ],
+            "name": "testSelectedLunch",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "WFL_LunchMeetupListControllerTest",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [
+            {
+                "name": "IsTest"
+            }
+        ],
+        "location": {
+            "column": 7,
+            "line": 2
+        },
+        "modifiers": [
+            "testMethod"
+        ],
+        "name": "WFL_LunchMeetupListControllerTest",
+        "references": [],
+        "type": "WFL_LunchMeetupListControllerTest"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 6
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 18
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 22
+            },
+            "modifiers": [],
+            "name": "lm",
+            "references": [],
+            "type": "Lunch_Meetup__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 38
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 42
+            },
+            "modifiers": [],
+            "name": "lmController",
+            "references": [],
+            "type": "WFL_NewLunchMeetup"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 43
+            },
+            "modifiers": [],
+            "name": "values",
+            "references": [],
+            "type": "Map"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 44
+            },
+            "modifiers": [],
+            "name": "dt",
+            "references": [],
+            "type": "Datetime"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 57
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 61
+            },
+            "modifiers": [],
+            "name": "lm",
+            "references": [],
+            "type": "Lunch_Meetup__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 69
+            },
+            "modifiers": [],
+            "name": "u",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 81
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 88
+            },
+            "modifiers": [],
+            "name": "lunchInsert",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 25,
+                "line": 94
+            },
+            "modifiers": [],
+            "name": "lm",
+            "references": [],
+            "type": "Lunch_Meetup__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 39,
+                "line": 102
+            },
+            "modifiers": [],
+            "name": "lmctrl",
+            "references": [],
+            "type": "WFL_LunchMeetupListController"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 104
+            },
+            "modifiers": [],
+            "name": "currentPage",
+            "references": [],
+            "type": "PageReference"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 27,
+                "line": 108
+            },
+            "modifiers": [],
+            "name": "sl",
+            "references": [],
+            "type": "WFL_SelectedLunch"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 109
+            },
+            "modifiers": [],
+            "name": "u",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 29,
+                "line": 114
+            },
+            "modifiers": [],
+            "name": "todayController",
+            "references": [],
+            "type": "WFL_TodayController"
+        }
+    ]
+}

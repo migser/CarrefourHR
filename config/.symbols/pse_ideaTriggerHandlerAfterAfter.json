@@ -1,0 +1,312 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJAAA0",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJAAA0",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 13
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "routeApprovals",
+            "parameters": [
+                {
+                    "name": "oldIdeas",
+                    "type": "Map"
+                },
+                {
+                    "name": "newIdeas",
+                    "type": "Map"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 54
+            },
+            "modifiers": [
+                "public"
+            ],
+            "name": "submitIdea",
+            "parameters": [
+                {
+                    "name": "a",
+                    "type": "pse_Idea__c"
+                }
+            ],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "pse_ideaTriggerHandlerAfterAfter",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 20,
+                "line": 8
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "currentStep",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 17,
+                "line": 9
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "c",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 10
+            },
+            "modifiers": [
+                "private"
+            ],
+            "name": "cat",
+            "references": [],
+            "type": "pse_Category__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 3
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_NYR",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 4
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_UCC",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 5
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_BR",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 30,
+                "line": 6
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "final"
+            ],
+            "name": "STAGE_PM",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 27,
+                "line": 7
+            },
+            "modifiers": [
+                "private",
+                "static"
+            ],
+            "name": "STEP1",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 11
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "isExecuting",
+            "references": [],
+            "type": "Boolean"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 27,
+            "line": 1
+        },
+        "modifiers": [
+            "public",
+            "with sharing"
+        ],
+        "name": "pse_ideaTriggerHandlerAfterAfter",
+        "references": [],
+        "type": "pse_ideaTriggerHandlerAfterAfter"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 50,
+                "line": 13
+            },
+            "modifiers": [],
+            "name": "oldIdeas",
+            "references": [],
+            "type": "Map"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 81,
+                "line": 13
+            },
+            "modifiers": [],
+            "name": "newIdeas",
+            "references": [],
+            "type": "Map"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 10,
+                "line": 22
+            },
+            "modifiers": [],
+            "name": "ideaId",
+            "references": [],
+            "type": "Id"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 23
+            },
+            "modifiers": [],
+            "name": "old_idea",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 16,
+                "line": 24
+            },
+            "modifiers": [],
+            "name": "new_idea",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 32
+            },
+            "modifiers": [],
+            "name": "underConsideration",
+            "references": [],
+            "type": "pse_Under_Consideration__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 37,
+                "line": 54
+            },
+            "modifiers": [],
+            "name": "a",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 15,
+                "line": 57
+            },
+            "modifiers": [],
+            "name": "idea2",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 39,
+                "line": 69
+            },
+            "modifiers": [],
+            "name": "req1",
+            "references": [],
+            "type": "ProcessSubmitRequest"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 81
+            },
+            "modifiers": [],
+            "name": "result",
+            "references": [],
+            "type": "ProcessResult"
+        }
+    ]
+}

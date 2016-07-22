@@ -1,0 +1,235 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJ8AAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJ8AAK",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 3
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "createTestIdea",
+            "parameters": [],
+            "references": [],
+            "returnType": "pse_Idea__c",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 25,
+                "line": 15
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "createTestFeed",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "FeedItem",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 24
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "createTestCategory",
+            "parameters": [],
+            "references": [],
+            "returnType": "pse_Category__c",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 34
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "createTestUser",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "User",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 45,
+                "line": 66
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "createTestRule",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "String"
+                }
+            ],
+            "references": [],
+            "returnType": "pse_Idea_Rules_Evaluation__c",
+            "type": null
+        }
+    ],
+    "name": "pse_testDataFactory",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 27,
+            "line": 1
+        },
+        "modifiers": [
+            "public",
+            "with sharing"
+        ],
+        "name": "pse_testDataFactory",
+        "references": [],
+        "type": "pse_testDataFactory"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 10,
+                "line": 4
+            },
+            "modifiers": [],
+            "name": "title",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 15,
+                "line": 5
+            },
+            "modifiers": [],
+            "name": "idea",
+            "references": [],
+            "type": "pse_Idea__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 48,
+                "line": 15
+            },
+            "modifiers": [],
+            "name": "id",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 17
+            },
+            "modifiers": [],
+            "name": "myFeed",
+            "references": [],
+            "type": "FeedItem"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 19,
+                "line": 26
+            },
+            "modifiers": [],
+            "name": "cat",
+            "references": [],
+            "type": "pse_Category__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 44,
+                "line": 34
+            },
+            "modifiers": [],
+            "name": "id",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 36
+            },
+            "modifiers": [],
+            "name": "user",
+            "references": [],
+            "type": "User"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 38
+            },
+            "modifiers": [],
+            "name": "p",
+            "references": [],
+            "type": "Profile"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 68,
+                "line": 66
+            },
+            "modifiers": [],
+            "name": "id",
+            "references": [],
+            "type": "String"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 69
+            },
+            "modifiers": [],
+            "name": "rule",
+            "references": [],
+            "type": "pse_Idea_Rules_Evaluation__c"
+        }
+    ]
+}

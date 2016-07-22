@@ -1,0 +1,218 @@
+<apex:page showHeader="false" controller="QSF_RFL_ReferralListController" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+
+<head>
+    <title>Employee Referral Programme - Referrals</title>
+    <apex:stylesheet value="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.QSF_RFL_jQuery_js)}"/>
+  
+    <style> 
+        .slds-list__item2 {
+            padding: 8px;
+            border-radius: 4px;
+            background-clip: padding-box;
+            border: 1px solid rgb(216, 221, 230);
+        }
+
+        .slds-list__item2:hover {
+            background-color: #f4f6f9;
+            border-color: #d8dde6;
+        }
+
+        .slds-list__item2 + .slds-list__item2 {
+            margin-top: 8px;
+        }       
+    </style>
+
+    <script>
+        var icons = {
+            waiting: '{!URLFOR($Resource.QSF_RFL_SLDS, "assets/icons/utility-sprite/svg/symbols.svg#clock")}',
+            process_started: '{!URLFOR($Resource.QSF_RFL_SLDS, "assets/icons/utility-sprite/svg/symbols.svg#threedots")}',
+            accepted: '{!URLFOR($Resource.QSF_RFL_SLDS, "assets/icons/utility-sprite/svg/symbols.svg#check")}',
+            rejected: '{!URLFOR($Resource.QSF_RFL_SLDS, "assets/icons/utility-sprite/svg/symbols.svg#error")}'
+        }
+
+        var colors = {
+            waiting: {background: '#FFFFFF', icon: '#F7B64B'},
+            process_started: {background: '#FFFFFF', icon: '#62B7ED'},
+            accepted: {background: 'rgba(0, 210, 194, .05)', icon: 'rgba(0, 210, 194, 1)'},
+            rejected: {background: 'rgba(255, 95, 91, .05)', icon: 'rgba(255, 95, 91, 1)'},
+        }
+
+        var referrals = [
+            <apex:repeat value="{!referrals}" var="r">
+                {
+                    sfid:'{!r.sfid}',  contactName: '{!r.contactName}', positionName: '{!r.positionName}', 
+                    positionHiringManager: '{!r.positionHiringManager}', positionStatus: '{!r.positionStatus}', 
+                    positionReferralFee: '{!r.positionReferralFee}', positionDeadline: '{!r.positionDeadline}',
+                    applicationStatus : '{!r.applicationStatus}'
+                },
+            </apex:repeat>
+       ];
+        
+        $(function() {
+            displayReferrals();
+        });
+
+        function scroll2Top() {
+            if ($('#alertDialog').hasClass('slds-hide')) {
+                $('#pageHeader')[0].scrollIntoView();
+            } else {
+                $('#alertDialog')[0].scrollIntoView();
+            }
+        }
+
+
+        function navigateTo(url) {
+            $('#spinner').show();
+            if ((typeof(sforce) != 'undefined') && (sforce.one != null)) {
+                sforce.one.navigateToURL(url, true);
+            } else {
+                window.open(url, '_top');
+            }
+        }
+
+        function showError(message) {
+            $('#alertDialogMessage').html(message);
+            $('#alertDialog').removeClass('slds-hide');
+            scroll2Top();
+        }
+
+        function hideError() {
+            $('#alertDialogMessage').html('');
+            $('#alertDialog').addClass('slds-hide');
+        }
+
+        function filter() {
+            var pattern = $('#filterInput').val();
+
+            if (!pattern || pattern.trim().length == 0) {
+                return referrals.slice();
+            } else {
+                var filteredResult = new Array();
+                var rexp = new RegExp(pattern, 'i');
+                $.each(referrals, function (i, r) { 
+                    if (!r.jsonString) { //Save jsonstring for performance
+                        r.jsonString = JSON.stringify(r);
+                    }
+
+                    if (rexp.test(r.jsonString)) {
+                        filteredResult.push(r);
+                    }
+                });
+
+                return filteredResult;
+            }
+        }
+
+        function displayReferrals() {
+            var lst = $('#referralsList');
+            lst.html('');
+            lst.hide();
+
+            result = filter();
+
+            if (result.length > 0) {
+                $.each(result, function (i, r) {
+                    var key = r.applicationStatus.replace(' ', '_').toLowerCase();
+                    var imgSrc = icons[key];
+                    var color = colors[key];
+                    
+                    lst.append(
+                        '<li class="slds-list__item2" id="board-' + r.sfid + '" style="background-color: ' + color.background + '">' +
+                            '<div class="slds-tile slds-tile--board">' +
+                              '<p class="slds-tile__title slds-truncate">' +
+                                '<a href="javascript:selectReferral(\'' + r.sfid + '\');">' + r.contactName + '</a> ' +
+                              '</p>' +
+                              '<div class="slds-tile__detail">' +
+                                '<p class="slds-text-heading--small">' + r.positionName + '</p>' +
+                                '<p class="slds-truncate"><b>Hiring Manager:</b> ' + r.positionHiringManager + '</p>' +
+                                '<p class="slds-truncate"><b>Position Status:</b> ' + r.positionStatus + '</p>' +
+                                '<p class="slds-truncate"><b>Fee:</b> ' + r.positionReferralFee + '</p>' +
+                                '<p class="slds-truncate"><b>Deadline: </b>' + r.positionDeadline + '</p>' +
+                              '</div>' +
+                              '<span class="slds-icon__container slds-tile--board__icon">' +
+                                '<svg aria-hidden="true" class="slds-icon slds-icon--x-small" style="background: ' + color.icon + '; padding: 1.5px">' + 
+                                  '<use xlink:href="' + imgSrc + '"></use>' + 
+                                '</svg>' + 
+                                '<span class="slds-assistive-text">' + r.applicationStatus + '</span>' +
+                              '</span>' + 
+                            '</div>' +
+                        '</li>'
+                    );
+                });
+                
+                lst.show();
+            }
+        }
+    </script>
+</head>    
+
+<body style="padding: 1px; overflow:visible;"> 
+    <!-- REQUIRED SLDS WRAPPER -->
+    <div class="slds" id="slds-wrapper">   
+        <!-- SPINNER OVERLAY -->
+        <div id="spinner" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; display:none; background-color:rgba(0,0,0,.7);">
+            <div class="slds-spinner--medium" style="top: 50%; left: 50%; position: relative; margin-top: -28px; margin-left: -28px;">
+                <img alt="Working..." src="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/images/spinners/slds_spinner_inverse.gif')}" />
+            </div>
+        </div>
+        <!-- / SPINNER OVERLAY -->
+        
+        <!-- MESSAGE ALERT -->
+        <div id="alertDialog" class="slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture slds-hide slds-m-bottom--small" role="alert">
+          <span class="slds-assistive-text">Error</span>
+          <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="hideError();">
+            <svg aria-hidden="true" class="slds-button__icon">
+              <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+            </svg>
+            <span class="slds-assistive-text">Close</span>
+          </button>          
+          <h2 id="alertDialogMessage">
+            <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small" style="float: left">
+                <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#ban')}"></use>
+            </svg>
+          </h2>
+        </div>       
+        <!-- / MESSAGE ALERT -->
+
+        <!-- HEADER -->
+        <div class="slds-page-header" id="pageHeader">    
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <img src="{!URLFOR($Resource.QSF_RFL_Resources, 'blue_logo.png')}" alt="Logo" width="48px" onclick="navigateTo('{!$Page.QSF_RFL_ReferralsMenuPage}');" style="cursor: pointer"/>
+                </div>
+
+                <div class="slds-media__body">
+                    <div class="slds-text-heading--label">Referral Programme</div>
+                    <p class="slds-text-heading--medium" id="formTitle">My Referrals</p>
+                </div>
+            </div>
+        </div>
+        <!-- / HEADER -->
+        
+        <!-- SEARCH -->
+        <div>
+          <div class="slds-form-element" style="padding: 10px 10px 0px 10px;">
+            <label class="slds-form-element__label" for="filterInput">Filter</label>
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                <svg aria-hidden="true" class="slds-input__icon" style="float: left">
+                    <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                </svg>
+              <input id="filterInput" class="slds-input" type="text" onkeyup="displayReferrals(); return true;" />
+            </div>
+          </div>
+        </div>
+        <!-- / SEARCH -->
+        
+        <!-- REFERRALS LIST -->
+        <div style="margin: 10px;">
+            <ul class="slds-list--vertical slds-has-cards slds-m-top--medium" id="referralsList" />
+        </div>
+        <!-- / REFERRALS LIST --> 
+    </div>
+    <!-- / REQUIRED SLDS WRAPPER -->
+</body>
+</html>
+</apex:page>

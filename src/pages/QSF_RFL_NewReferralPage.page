@@ -1,0 +1,697 @@
+<apex:page showHeader="false" controller="QSF_RFL_NewReferralController" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+
+<head>
+    <title>New Referral</title>
+    <apex:stylesheet value="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.QSF_RFL_jQuery_js)}"/>
+    <apex:includeScript value="{!URLFOR($Resource.QSF_RFL_phone_format_js)}"/>
+  
+    <style> 
+        .slds-list__item2 {
+            padding: 8px;
+            border-radius: 4px;
+            background-clip: padding-box;
+            border: 1px solid rgb(216, 221, 230);
+        }
+
+        .slds-list__item2:hover {
+            background-color: #f4f6f9;
+            border-color: #d8dde6;
+        }
+
+        .slds-list__item2 + .slds-list__item2 {
+            margin-top: 8px;
+        }
+
+        .slds .slds-radio2 {
+            display: block;
+        }
+        
+        .slds .slds-radio2 .slds-form-element__label {
+            display: inline;
+            vertical-align: middle;
+            font-size: 14px;
+        }
+        
+        .slds .slds-radio2 input[type=radio]:checked {  
+            background-color: #1589ee;   
+        }
+                
+        .slds .slds-radio2 input[type=radio] {
+            vertical-align: middle;
+            border: 1px solid #d8dde6;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 15px;
+            margin-right: 3px;
+            width: 15px;
+            outline: 0;      
+            -webkit-appearance: none;  
+        }
+        
+        .slds .slds-form-element__help {
+            display:none!important;
+        }
+
+        .slds .slds-has-error .slds-input {
+            background-color: #fff;
+            border-color: #c23934;
+            box-shadow: #c23934 0 0 0 1px inset;
+            background-clip: padding-box;
+        }
+
+        .slds .slds-has-error .slds-select {
+            background-color: #fff;
+            border-color: #c23934;
+            box-shadow: #c23934 0 0 0 1px inset;
+            background-clip: padding-box;
+        }
+
+        .slds .slds-has-error .slds-form-element__help  {
+            color: #c23934;
+            display:block!important;
+        }
+
+        .slds-is-required>.slds-form-element__label:before {
+            content: '*';
+            color: #c23934;
+            position: absolute;
+            left: -0.5rem;
+        }        
+    </style>
+
+    <script>
+        var upImgSrc = '{!URLFOR($Resource.QSF_RFL_SLDS, "assets/icons/utility-sprite/svg/symbols.svg#up")}';
+        var downImgSrc = '{!URLFOR($Resource.QSF_RFL_SLDS, "assets/icons/utility-sprite/svg/symbols.svg#down")}';
+        var spinnerSrc = '{!URLFOR($Resource.QSF_RFL_SLDS, "assets/images/spinners/slds_spinner.gif")}';
+
+
+
+        Visualforce.remoting.timeout = 30000; // Set timeout at page level
+        
+        var positionId = '{!position.Id}';
+        var applicationId = '{!referral.Application__c}';
+        var referralId = '{!referral.Id}';
+        
+        $(checkAndDisplayForms);
+
+        function checkAndDisplayForms() {
+            if (referralId.trim() != '') {
+                $('#positionDiv').hide();
+                $('#candidateDiv').hide();
+                $('#referralDiv').show();
+                $('#formTitle').html('REFERRAL CREATED');
+            } else if (positionId.trim() != '') {
+                $('#positionDiv').hide();
+                $('#candidateDiv').show();
+                $('#referralDiv').hide();
+                $('#formTitle').html('CANDIDATE DETAILS');
+            } else {
+                $('#positionDiv').show();
+                $('#candidateDiv').hide();
+                $('#referralDiv').hide();
+                $('#formTitle').html('POSITION SELECTION');
+            }
+        }
+    
+        function scroll2Top() {
+            if ($('#alertDialog').hasClass('slds-hide')) {
+                $('#pageHeader')[0].scrollIntoView();
+            } else {
+                $('#alertDialog')[0].scrollIntoView();
+            }
+        }
+
+        function navigateTo(url) {
+            $('#spinner').show();
+            if ((typeof(sforce) != 'undefined') && (sforce.one != null)) {
+                sforce.one.navigateToURL(url, true);
+            } else {
+                window.open(url, '_top');
+            }
+        }
+
+        function showError(message) {
+            $('#alertDialogMessage').html(message);
+            $('#alertDialog').removeClass('slds-hide');
+            scroll2Top();
+        }
+
+        function hideError() {
+            $('#alertDialogMessage').html('');
+            $('#alertDialog').addClass('slds-hide');
+        }
+
+        function retrieveCities() {
+            $('#positionsList').empty();
+            $('#citiesDiv').hide();
+            $('#geosDiv').removeClass('slds-has-error');     
+            $('#spinner').show();
+            var geo = $('#geo').val();
+    
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.QSF_RFL_NewReferralController.getCitiesForPositionsInGeo}',
+                geo, 
+                loadCities
+            );
+        }
+    
+        function loadCities(result, event) {
+            $('#spinner').hide();
+            $('#city').empty();
+
+            if (result.length > 0) {
+                $('#city').append($('<option>', {value: '', text : '', disabled: 'disabled', selected: 'selected'}));
+                $('#city').append($('<option>', {value: 'All', text : 'All'}));
+
+                $.each(result, function (i, item) {
+                    $('#city').append($('<option>', {value: item, text : item}));
+                });
+                
+                $('#citiesDiv').show();
+            } else {
+                $('#geosDiv').addClass('slds-has-error');
+            }
+        }
+        
+        function retrievePositions() {
+            $('#positionsList').hide();
+            $('#citiesDiv').removeClass('slds-has-error');
+            $('#spinner').show();
+            var city = $('#city').val();
+    
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.QSF_RFL_NewReferralController.getPositionsInCity}',
+                city, 
+                loadPositions
+            );
+        }
+
+        function loadPositions(result, event) {
+            $('#spinner').hide();
+            $('#positionsList').empty();
+
+            if (result.length > 0) {
+                $.each(result, function (i, p) {
+                    $('#positionsList').append(
+                      '<li class="slds-list__item2" id="board-' + p.sfid + '">' +
+                        '<div class="slds-tile slds-tile--board">' +
+                          '<p class="slds-tile__title slds-truncate">' + 
+                            '<a href="javascript:selectPosition(\'' + p.sfid + '\');">' + p.name + '</a>' + 
+                          '</p>' +
+                          '<div class="slds-tile__detail">' +
+                            '<p class="slds-text-heading--medium">Fee: ' + p.referralFee + '</p>' +
+                            '<p class="slds-truncate">Hiring Manager: ' + p.hiringManager + '</p>' +
+                            '<p class="slds-truncate">Created: ' + p.createdDate + '</p>' +
+                            '<p class="slds-truncate slds-has-alert">Deadline: ' + p.deadline + '</p>' +
+
+                            '<span class="slds-icon__container slds-tile--board__icon">' +
+                              '<svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon--x-small" onclick="toggleInfo(this, \'' + p.sfid + '\')">' + 
+                                '<use xlink:href="' + downImgSrc + '"></use>' + 
+                              '</svg>' + 
+                              '<span class="slds-assistive-text">More</span>' +
+                            '</span>' +
+                          '</div>' +
+                        '</div>' +
+                        '<div id="desc-' + p.sfid + '" class="slds-hide" style="border-top: 1px solid #d8dde6;padding-top: 5px;margin-top: 5px;"/>' +
+                      '</li>'
+                    );
+                    
+                }); //Select Id, Name, City__c, Referral_Fee__c, Deadline__c, CreatedDate, Hiring_Manager__r.Name
+                
+                $('#positionsList').show();
+            } else {
+                $('#geosDiv').addClass('slds-has-error');
+            }
+        }
+        
+        function toggleInfo(svg, id) {
+            var use = $(svg).find('use:first-of-type');
+            console.log(use);
+            var src = $(use).attr('xlink:href');
+            console.log(src);
+            if (src.indexOf(downImgSrc) != -1) {
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.QSF_RFL_NewReferralController.getPosition}',
+                    id, 
+                    function(result, event) {$('#desc-' + result.Id).html(result.Job_Description__c);},
+                    {escape: false}
+                );
+
+                use.attr('xlink:href', upImgSrc);
+
+                $('#desc-' + id).html('<div class="slds-spinner--small" style="margin: auto;">' + 
+                                        '<img alt="Loading..." src="' + spinnerSrc + '" />' + 
+                                      '</div>');
+
+                $('#desc-' + id).show();
+            } else {
+                use.attr('xlink:href', downImgSrc);
+                $('#desc-' + id).hide();
+            }
+        }
+
+        function selectPosition(sfid) {
+            positionId = sfid;
+            checkAndDisplayForms();
+        }
+
+        function validate(element) {
+            var valid = true;            
+
+            if (element.nodeName == 'INPUT' || element.nodeName == 'SELECT') {
+                var input = element;
+                if (input.type == 'tel') {
+                    if (input.value != null && input.value != '') {
+                        valid = isValidNumber(input.value);
+                    }
+                } else if (input.type == 'email') {
+                    valid = input.validity.valid;
+                } else if (input.type == 'text' || element.nodeName == 'SELECT') {
+                    valid = !(input.required && input.value == '');
+                }
+
+                if (valid) {
+                    $(input).closest('div .slds-form-element').removeClass('slds-has-error');
+                } else {
+                    $(input).closest('div .slds-form-element').addClass('slds-has-error');
+                }
+            } else if (element.nodeName == 'DIV') { //Validar todo el formulario
+                $(element).find('input').each(function() {
+                    valid &= validate(this); //Validate each field
+                    if (valid) {
+                        var email = $('#candidate_email').val();
+                        var phone = $('#candidate_phone').val();
+                        if (!(email && email.trim().length > 0 || phone && phone.trim().length > 0)) {
+                            valid = false;
+                            $('#error_contact').addClass('slds-has-error');
+                        }
+                    }
+                });
+            }
+
+            return valid;
+        }
+
+        function submitCandidateForm() {
+            $(document.activeElement).blur();
+            hideError();
+            $('#error_contact').removeClass('slds-has-error');
+
+            if (validate(document.getElementById('candidateDiv'))) {
+                var selected = $("input[type='radio'][name='recommend_options']:checked")[0];
+                
+                args = {
+                    position: positionId,
+                    name: $('#candidate_name').val(),
+                    fName: $('#candidate_family_name').val(),
+                    email: $('#candidate_email').val(),
+                    phone: $('#candidate_phone').val(),
+                    relation: $('#candidate_relationship').val(),
+                    recommend: selected ? $(selected).attr('sfdc-value') : null,
+                    comments: $('#candidate_comments').val(),
+                };
+                
+                $('#spinner').show();
+
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.QSF_RFL_NewReferralController.createReferral}',
+                    args, 
+                    function(result, event) {
+                        if(event.type === 'exception') {
+                            console.log(event);
+                            showError('Error: ' + event.message);
+                        } else if (event.status) {
+                            if (result.result === 'OK') {
+                                $('#referralDiv').show();
+                                $('#candidateDiv').hide();
+                                scroll2Top();
+                                
+                                //Reset form
+                                $('#candidateDiv').find('input, select, textarea').each(function() {
+                                    $(this).val(null);
+                                    $(this).prop('checked', false );
+                                });
+
+                                referralId = result.referralId;
+                                applicationId = result.applicationId;
+                            } else {
+                                console.log(event);
+                                showError('Error: ' + event.message);
+                            }
+                        }
+
+                        $('#spinner').hide();
+                    }
+                );
+            }
+        }
+
+        function toggleExtInfo() {
+            $(document.activeElement).blur();
+
+            if ($("#extendedDataDiv").hasClass("slds-hide")) {
+                $("#extendedDataDiv").removeClass("slds-hide");
+                $("#extInfoButton").addClass("slds-hide");
+            } else {
+                $("#extendedDataDiv").addClass("slds-hide");
+                $("#extInfoButton").removeClass("slds-hide");
+            }
+        }
+
+        function showNewAttachmentDiv() {
+            $('#formTitle').html('NEW ATTACHMENT');
+            $('#referralLandingDiv').hide();
+            $('#attachmentDiv').show();
+        }
+
+        function selectAttFile(input) {
+            var file = $(input)[0].files[0]
+            if (file) {
+                $('#candidate_att_filename').val(file.name);
+            } else {
+                $('#candidate_att_filename').val(null);
+            }
+        }
+
+        function submitAttachmentForm() {
+            $(document.activeElement).blur();
+            hideError();
+            
+            //TODO  Check sizes,
+            if (applicationId) {
+                var valid = validate(document.getElementById('candidate_att_type'));
+                valid &= validate(document.getElementById('candidate_att_filename'));
+                if (valid) {
+                    document.getElementById('{!$Component.frmFile.attachment_referralId}').value = referralId;
+                    document.getElementById('{!$Component.frmFile.attachment_applicationId}').value = applicationId;
+                    document.getElementById('{!$Component.frmFile.attachment_type}').value = $('#candidate_att_type').val();
+                    document.getElementById('{!$Component.frmFile.attachment_description}').value = $('#candidate_att_description').val();
+
+                    $('#spinner').show();
+                    actionUpload(); 
+                }
+            } else {
+                alert('No application ID!!');
+            }
+        }
+    </script>
+</head>    
+
+<body style="padding: 1px; overflow:visible;"> 
+    <!-- REQUIRED SLDS WRAPPER -->
+    <div class="slds" id="slds-wrapper">   
+        <!-- SPINNER OVERLAY -->
+        <div id="spinner" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; display:none; background-color:rgba(0,0,0,.7);">
+            <div class="slds-spinner--medium" style="top: 50%; left: 50%; position: relative; margin-top: -28px; margin-left: -28px;">
+                <img alt="Working..." src="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/images/spinners/slds_spinner_inverse.gif')}" />
+            </div>
+        </div>
+        <!-- / SPINNER OVERLAY -->
+        
+        <!-- MESSAGE ALERT -->
+        <div id="alertDialog" class="slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture slds-hide slds-m-bottom--small" role="alert">
+          <span class="slds-assistive-text">Error</span>
+          <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="hideError();">
+            <svg aria-hidden="true" class="slds-button__icon">
+              <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+            </svg>
+            <span class="slds-assistive-text">Close</span>
+          </button>          
+          <h2 id="alertDialogMessage">
+            <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small" style="float: left">
+                <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#ban')}"></use>
+            </svg>
+            Base System Alert
+          </h2>
+        </div>
+        <!-- / MESSAGE ALERT -->
+
+        <!-- HEADER -->
+        <div class="slds-page-header" id="pageHeader">    
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <img src="{!URLFOR($Resource.QSF_RFL_Resources, 'blue_logo.png')}" alt="Logo" width="48px" onclick="navigateTo('{!$Page.QSF_RFL_ReferralsMenuPage}');"/>
+                </div>
+                <div class="slds-media__body">
+                    <div class="slds-text-heading--label">New Referral</div>
+                    <p class="slds-text-heading--medium" id="formTitle"/>
+                </div>
+            </div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- POSITION SELECTION FORM --> 
+        <div id="positionDiv" class="slds-hide" style="margin: 10px;">
+            <div class="slds-form slds-m-top--medium">
+                <div class="slds-form-element" id="geosDiv">
+                    <label class="slds-form-element__label" for="geo">Select Geography:</label>
+                    <div class="slds-form-element__control">
+                        <select id="geo" class="slds-select" onchange="retrieveCities();">
+                            <option disabled='disabled' selected='true'></option>
+                            <option>APAC</option>
+                            <option>EMEA</option>
+                            <option>AMER</option>
+                        </select>
+                    </div>
+
+                    <span id="noPositionsForGeoSpan" class="slds-form-element__help ">There are no positions open for that geography</span>
+                </div>
+
+                <div class="slds-form-element slds-hide slds-m-top--small" id="citiesDiv">
+                    <label class="slds-form-element__label" for="city">Select City:</label>
+                    <div class="slds-form-element__control">
+                        <select id="city" class="slds-select" onchange="retrievePositions();"/>
+                    </div>
+                    <span class="slds-form-element__help">There are no positions open for that city</span> 
+                </div>
+            </div>
+
+            <ul class="slds-list--vertical slds-has-cards slds-m-top--medium" id="positionsList"/>
+        </div>
+        <!-- / POSITION SELECTION FORM --> 
+
+        <!-- CANDIDATE DATA FORM --> 
+        <div id="candidateDiv" style="margin: 10px;">
+            <div class="slds-form slds-m-top--medium">
+                <div class="slds-form-element slds-is-required slds-m-top--medium"> 
+                    <label class="slds-form-element__label" for="candidate_name">First Name</label>
+                    <div class="slds-form-element__control">
+                        <input id="candidate_name" class="slds-input" type="text" placeholder="Enter first name" required="true" />
+                        <span id="error_name" class="slds-form-element__help">First name is required</span>
+                    </div>
+                </div>
+                <div class="slds-form-element slds-is-required slds-m-top--medium"> 
+                    <label class="slds-form-element__label" for="candidate_family_name">Family Name</label>
+                    <div class="slds-form-element__control">
+                        <input id="candidate_family_name" class="slds-input" type="text" placeholder="Enter family name" required="true" />
+                        <span id="error_family_name" class="slds-form-element__help">Family name is required</span>
+                    </div>
+                </div>
+                <div class="slds-form-element slds-m-top--medium"> 
+                    <label class="slds-form-element__label" for="candidate_email">Email</label>
+                    <div class="slds-form-element__control">
+                        <input id="candidate_email" class="slds-input" type="email" placeholder="Enter e-mail" onblur="validate(this);"/>
+                        <span id="error_email" class="slds-form-element__help">Please, provide a valid email address</span>
+                    </div>
+                </div>
+                <div class="slds-form-element slds-m-top--medium"> 
+                    <label class="slds-form-element__label" for="candidate_phone">Phone</label>
+                    <div class="slds-form-element__control">
+                        <input id="candidate_phone" class="slds-input" type="tel" placeholder="Enter phone" onblur="validate(this);" />
+                        <span id="error_phone" class="slds-form-element__help">Please, provide a valid phone number</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-form-element__control" id="error_contact">
+                <span class="slds-form-element__help">Either phone or email address is required.</span>
+            </div>
+
+            <div id='extendedDataDiv' class="slds-m-top--large slds-hide">
+                <div class="slds-notify slds-notify--alert slds-theme--inverse-text slds-theme--alert-texture" >
+                    <span class="slds-assistive-text">Ext Details</span>
+                    <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="toggleExtInfo();">
+                        <svg aria-hidden="true" class="slds-button__icon">
+                          <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>                     
+                    <h2>Extended Details</h2>
+                </div>
+
+                <div class="slds-form-element slds-m-top--medium">
+                    <label class="slds-form-element__label" for="geo">Select Relationship</label>
+                    <div class="slds-form-element__control">
+                        <select id="candidate_relationship" class="slds-select">
+                            <option disabled='disabled' selected='true'></option>
+                            <apex:repeat value="{!relationships}" var="r">
+                                <option value="{!r.value}">{!r.label}</option>
+                            </apex:repeat>
+                        </select>
+                    </div>
+                </div>
+            
+                <fieldset class="slds-form-element slds-m-top--medium">
+                    <legend class="slds-form-element__label slds-form-element__label--top">You would like to</legend>
+                    <div class="slds-form-element__control">
+                        <label class="slds-radio2" for="candidate_recommend">
+                            <input type="radio" name="recommend_options" id="candidate_recommend" sfdc-value='recommend' />
+                            <span class="slds-radio--faux" ></span>
+                            <span class="slds-form-element__label"><b>Recommend</b> the candidate.</span>
+                        </label>
+                        <label class="slds-radio2" for="candidate_refer">
+                            <input type="radio" name="recommend_options" id="candidate_refer" sfdc-value='refer'/>
+                            <span class="slds-radio--faux"></span>
+                            <span class="slds-form-element__label"><b>Refer</b> the candidate.</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="slds-form-element slds-m-top--medium">
+                  <label class="slds-form-element__label" for="candidate_comments">Comments</label>
+                  <div class="slds-form-element__control">
+                    <textarea id="candidate_comments" class="slds-textarea" placeholder="Enter your comments" rows="5"></textarea>
+                  </div>
+                </div>
+            </div>
+
+            <div class='slds-m-top--medium' style='text-align:center'>
+                <button class="slds-button slds-button--neutral" id="extInfoButton" onclick="toggleExtInfo();" style="width: 120px">
+                    <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">
+                      <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#notebook')}"></use>
+                    </svg>
+                    Details
+                </button>
+                &nbsp;&nbsp;
+                <button class="slds-button slds-button--neutral" onclick="submitCandidateForm();" style="width: 120px">
+                    <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">
+                      <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#link')}"></use>
+                    </svg>
+                    Send
+                </button>
+            </div>
+        </div>
+        <!-- / CANDIDATE DATA FORM --> 
+
+        <!-- REFERRAL DIV --> 
+        <div id="referralDiv" class="slds-hide slds-m-top--large">
+            <div id="referralLandingDiv">
+                <div style="text-align: center; display:{!IF(attachments.size = 0, 'inline-block', 'none')}; width: 100%">
+                    <span style="padding: 5px;">
+                        <svg aria-hidden="true" class="slds-icon slds-icon-text-default">
+                            <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#success')}"></use>
+                        </svg>
+                    </span>
+
+                    <span style="display: inherit">
+                        <div class="slds-text-heading--label">Your referral was successfully submitted.</div>
+                    </span>
+                </div>
+    
+                <div id="referralAttachmentsDiv" class="{!IF(attachments.size = 0, 'slds-hide', '')}">
+                    <table class="slds-table slds-table--bordered">
+                      <thead>
+                        <tr class="slds-text-heading--label">
+                          <th class="slds-is-sortable2" scope="col">
+                            <span class="slds-truncate">Attachment Type</span>
+                          </th>
+                          <th scope="col">
+                            <span class="slds-truncate">Attachment Name</span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <apex:repeat value="{!attachments}" var="a">
+                            <tr class="slds-hint-parent">
+                              <td data-label="type">
+                                <span class="slds-truncate">{!a.Type__c}</span>
+                              </td>
+                              <td data-label="name">
+                                <span class="slds-truncate">{!a.Name}</span>
+                              </td>
+                            </tr>
+                        </apex:repeat>
+                      </tbody>
+                    </table>
+                </div>
+
+                <div class="slds-m-top--large" style="text-align: center">
+                    <button class="slds-button slds-button--neutral slds-m-right--x-small" 
+                            onclick="showNewAttachmentDiv();">
+                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">
+                          <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#attach')}"></use>
+                        </svg>
+                        Add Attachment
+                    </button>
+                    <button class="slds-button slds-button--neutral" 
+                            onclick="navigateTo('{!URLFOR($Page.QSF_RFL_ReferralsMenuPage)}');">
+                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">
+                          <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}"></use>
+                        </svg>
+                        Done
+                    </button>
+                </div>
+            </div>
+
+            <!-- NEW ATTACHMENT FORM -->
+            <div id="attachmentDiv" class="slds-hide" style="padding: 5px">
+                <div class="slds-form-element slds-is-required">
+                    <label class="slds-form-element__label" for="candidate_att_type">Type</label>
+                    <div class="slds-form-element__control">
+                        <select id="candidate_att_type" class="slds-select" required="required">
+                            <option disabled='disabled' selected='true'></option>
+                            <apex:repeat value="{!attachmentTypes}" var="t">
+                                <option value="{!t.value}">{!t.label}</option>
+                            </apex:repeat>
+                        </select>
+                        <span id="error_att_type" class="slds-form-element__help">Please, select a type</span>
+                    </div>
+                </div>
+                <div class="slds-form-element slds-is-required slds-m-top--medium"> 
+                    <label class="slds-form-element__label" for="candidate_att_filename">File</label>
+                    <div class="slds-form-element__control">
+                        <input id="candidate_att_filename" class="slds-input" type="text" placeholder="Select file" 
+                               onclick="document.getElementById('{!$Component.frmFile.candidate_att_file}').click();"
+                               required="required" readonly="readonly" />
+                        <span id="error_att_file" class="slds-form-element__help">Please, select a file</span>
+                    </div>
+                </div>
+                <div class="slds-form-element slds-m-top--medium"> 
+                    <label class="slds-form-element__label" for="candidate_att_description">Description</label>
+                    <div class="slds-form-element__control">
+                        <input id="candidate_att_description" class="slds-input" type="text" placeholder="Enter description"/>
+                    </div>
+                </div>
+                <div class="slds-m-top--medium" style="text-align: center">
+                    <button class="slds-button slds-button--neutral" onclick="submitAttachmentForm();" style="width: 120px">
+                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left">
+                          <use xlink:href="{!URLFOR($Resource.QSF_RFL_SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#upload')}"></use>
+                        </svg>                    
+                        Upload
+                    </button>
+                </div>
+            </div> 
+            <div class="slds-hide">
+                <apex:form id="frmFile">
+                    <apex:actionRegion >
+                        <apex:inputHidden value="{!currentReferralId}" id="attachment_referralId" />
+                        <apex:inputHidden value="{!appAttachment.Application__c}" id="attachment_applicationId" />
+                        <apex:inputHidden value="{!appAttachment.Type__c}" id="attachment_type" />
+                        <apex:inputHidden value="{!appAttachment.Description__c}" id="attachment_description" />
+                        <apex:inputFile id="candidate_att_file" value="{!attachment.body}" filename="{!attachment.name}" onchange="selectAttFile(this);" required="true"/>
+
+                        <apex:actionFunction action="{!upload}" name="actionUpload"/>
+                    </apex:actionRegion>
+                </apex:form>
+            </div>            
+            <!-- NEW ATTACHMENT FORM --> 
+        </div>
+         <!-- / REFERRAL DIV -->
+    </div>
+    <!-- / REQUIRED SLDS WRAPPER -->
+</body>
+</html>
+</apex:page>

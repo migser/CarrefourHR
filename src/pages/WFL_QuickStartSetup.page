@@ -1,0 +1,131 @@
+<apex:page showHeader="true" controller="WFL_QuickStartController" standardStylesheets="false" sidebar="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0">    
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+
+<head>
+  <title>What's for Lunch</title>
+  <apex:stylesheet value="{!URLFOR($Resource.WFL_SLDS0101, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+  <apex:includeScript value="{!URLFOR($Resource.wfl_jquery)}"/>
+</head>    
+<body>    
+
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="slds">    
+
+    <!-- MASTHEAD -->
+    <div class="slds-page-header slds-text-align--center" role="banner">    
+        <span class="slds-icon__container--circle">
+            <img src="{!URLFOR($Resource.wfl_logo)}" alt="Logo" width="150px"/>
+        </span>
+        <p class="slds-text-heading--medium">
+            <span>What's for Lunch</span>
+        </p>
+    </div>
+        
+    <!-- / MASTHEAD -->    
+    <div id="spinner" class="slds-hide">
+        <div class="slds-spinner--medium" style="top: 50%;left: 50%;position: relative;margin-top: -28px;margin-left: -28px;">
+            <img alt="Loading..." src="{!URLFOR($Resource.WFL_SLDS0101, 'assets/images/spinners/slds_spinner_inverse.gif')}" />
+        </div>        
+      </div><br/>
+      <!-- MESSAGE ALERT -->
+      <div id="alertDialog" class="slds-notify slds-notify--alert slds-theme--success slds-theme--success-texture slds-hide slds-m-bottom--small" role="success">
+          <span class="slds-assistive-text">Error</span>
+          <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="hideError();">
+              <svg aria-hidden="true" class="slds-button__icon">
+                  <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+              </svg>
+              <span class="slds-assistive-text">Close</span>
+          </button>          
+          <h2 id="alertDialogMessage">
+              <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small" style="float: left">
+                  <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/utility-sprite/svg/symbols.svg#ban')}"></use>
+              </svg>
+              Base System Alert
+          </h2>
+      </div>
+      <!-- / MESSAGE ALERT -->
+      <div class="slds-text-heading--small" style="text-align: center;">Quick Start Setup</div><br/>
+     
+    <!-- BUTTONS -->
+    <div style="padding-top: 10px">
+        <div class="navButtonDiv" style="text-align: center;">
+            <div class="slds-text-heading--small">1. Create Collaborative Group <i>What's for Lunch.</i></div><br/>
+            <button class="slds-button slds-button--brand navButton" onclick="createChatterGroup();"> 
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                    <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/standard-sprite/svg/symbols.svg#groups')}"></use>
+                </svg>
+                Create Group
+            </button><br/><br/>
+            <div class="slds-text-heading--small">2. Create 6 months of lunch menu in draft status. Default type applied.</div><br/>
+            <button class="slds-button slds-button--brand navButton" onclick="generateLunchMenus();"> 
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                    <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/standard-sprite/svg/symbols.svg#groups')}"></use>
+                </svg>
+                Create
+            </button><br/><br/>
+            <div class="slds-text-heading--small">Optional - Remove all future Lunch Menus (will erase data)</div><br/>
+            <button class="slds-button slds-button--brand navButton" onclick="deleteLunchMenus();"> 
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                    <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/standard-sprite/svg/symbols.svg#groups')}"></use>
+                </svg>
+                Remove
+            </button><br/><br/>
+            <div class="slds-text-heading--small">3. Sys Admin: Do not forget to remove this tab after setup</div><br/>
+        </div>
+        
+              
+    </div>
+    <!-- / BUTTONS -->      
+  </div>
+  <!-- / REQUIRED SLDS WRAPPER -->    
+	<script>
+    function hideError() {
+        $('#alertDialogMessage').html('');
+        $('#alertDialog').addClass('slds-hide');
+    }
+    
+    function showError(message) {
+        $('#alertDialogMessage').html(message);
+        $('#alertDialog').removeClass('slds-hide');
+    }
+    function generateLunchMenus() {
+        hideError();
+        $('#spinner').show();
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.WFL_QuickStartController.createLunchMenus}',
+            function(result, event) {
+                $('#spinner').hide();
+                showError('Lunch Menus created');
+            }
+        );
+    }
+    function deleteLunchMenus() {
+        hideError();
+        $('#spinner').show();
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.WFL_QuickStartController.removeFutureLunchMenus}',
+            function(result, event) {
+                $('#spinner').hide();
+                showError('Lunch Menus deleted');
+            }
+        );
+    }
+    function createChatterGroup() {
+        hideError();
+        $('#spinner').show();
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.WFL_QuickStartController.createChatterGroup}',
+            function(result, event) {
+                $('#spinner').hide();
+                if (result == true)
+	                showError('Lunch Group created');
+                else
+                    showError('Lunch Group already created, skipping..');
+            }
+        );
+    }
+    </script>
+</body>
+</html>
+</apex:page>

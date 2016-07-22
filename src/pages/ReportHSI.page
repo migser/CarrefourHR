@@ -1,0 +1,469 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false" 
+           standardController="PSE_Health_Safety_Issue_Report__c"> 
+           <!--extensions="AnnotatePhotoController">-->
+   <html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+            <style>
+                .btn-file {
+                    position: relative;
+                    overflow: hidden;
+                }
+                .btn-file input[type=file] {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    min-width: 100%;
+                    min-height: 100%;
+                    font-size: 100px;
+                    text-align: right;
+                    filter: alpha(opacity=0);
+                    opacity: 0;
+                    outline: none;
+                    background: white;
+                    cursor: inherit;
+                    display: block;
+                }                
+                .mypostbtn {
+                    -webkit-border-radius: 7;
+                    -moz-border-radius: 7;
+                    border-radius: 7px;
+                    font-family: Arial;
+                    color: #ffffff;
+                    font-size: 14px;
+                    background: #137CBD;
+                    padding: 5px 14px 4px 14px !important; 
+                    text-decoration: none;
+                    border: 0px !important;
+                }               
+                
+                #loading {
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 100;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: rgba(192, 192, 192, 0.5);
+                    background-image: url("/resource/spinner");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                body {
+                    margin: 0;
+                    padding: 0;
+                    //text-align: center;
+                    width: 100%;
+                    background-color: #F0F1F2;
+                    
+                    margin-bottom: 60px;
+                }
+
+                label {
+                    font-size: 14px;
+                }
+
+                .footer {
+                  position: absolute;
+                  bottom: 0;
+                  width: 99%;
+                  /* Set the fixed height of the footer here */
+                  height: 103px;
+                  !background-color:#fff;
+                  !border-top: 1px solid #dadee2;
+                }
+
+                .canvas-container {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                }
+                
+                #tools_sketch {
+                    display: block;
+                    padding: 0;
+                    margin: 0 auto;
+            
+                    background-color:white;
+                    border-radius: 5px; 
+                    background: #ffffff no-repeat center center;
+                
+                    border:1px solid #dadee2 ; 
+                }
+                
+                #color_box {
+                    display: block;
+                    padding-top: 10px;
+                    margin: 0 auto;
+                    border-radius: 5px; 
+                    border:0px;
+                    background: #575656;
+                    width: 90%;
+                }                
+                .color-btn {
+                    margin:2px;
+                    border:1px solid white; 
+                    border-radius:20px;
+                    font: bold 11px Arial;
+                    text-decoration: none;
+                    padding: 6px 12px 6px 12px;
+                }
+                .color-btn:active {
+                    outline: none !important;
+                    border:2px solid #9ecaed !important; 
+                    box-shadow: 0 0 20px #9ecaed !important;
+                }
+                
+                div .colour {
+                    margin: auto;
+                    width: 28px;
+                    height: 28px;
+                    display: inline-block;  
+                    margin: 2px;
+                    border:1px solid white; 
+                    border-radius: 14px;
+                }
+                div .colour-active {
+                    outline: none !important;
+                    border:2px solid #9ecaed !important; 
+                    box-shadow: 0 0 20px #9ecaed !important;
+                }
+                div .size {
+                    margin: auto;
+                    display: inline-block;  
+                    border: 0px; 
+                    background-color: #000;
+                    position: absolute;
+                    border:1px solid white; 
+                    bottom: 0;
+                }
+                div .size-active {
+                    outline: none !important;
+                    border:2px solid #9ecaed !important; 
+                    box-shadow: 0 0 20px #9ecaed !important;
+                }
+                
+            </style>
+        </head>
+        <body>
+            <apex:includeScript value="{!$Resource.forcetk}"/>
+            <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"/>
+            <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"/>
+            <apex:includeScript value="{!$Resource.exif}"/>
+            <apex:includeScript value="{!$Resource.photo_sketch}"/>
+            <script src='/canvas/sdk/js/publisher.js'></script>
+            <div id="loading"></div>
+
+            <apex:remoteObjects >
+                <apex:remoteObjectModel name="PSE_Health_Safety_Issue_Report__c" jsShorthand="HReport" 
+                    fields="Name,Id,PSE_Subject__c,PSE_Status__c,PSE_Location__c,PSE_Assigned_To__c,PSE_Detailed_Description__c"
+                >
+                </apex:remoteObjectModel>
+            </apex:remoteObjects>
+            
+            <div class="container-fluid" id="form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <apex:form id="apexform">
+                            <div class="form-group">
+                                <label for="{!$Component.subject}">
+                                    {!$ObjectType.PSE_Health_Safety_Issue_Report__c.fields.PSE_Subject__c.label}
+                                </label>
+                                <apex:inputField id="subject" styleClass="form-control"
+                                    value="{!PSE_Health_Safety_Issue_Report__c.PSE_Subject__c}"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="{!$Component.location}">
+                                    {!$ObjectType.PSE_Health_Safety_Issue_Report__c.fields.PSE_Location__c.label}
+                                </label>
+                                <apex:inputField id="location" styleClass="form-control"
+                                    value="{!PSE_Health_Safety_Issue_Report__c.PSE_Location__c}"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="{!$Component.category}">
+                                    {!$ObjectType.PSE_Health_Safety_Issue_Report__c.fields.PSE_Category__c.label}
+                                </label>
+                                <apex:inputField id="category" styleClass="form-control"
+                                    value="{!PSE_Health_Safety_Issue_Report__c.PSE_Category__c}"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="{!$Component.description}">
+                                    {!$ObjectType.PSE_Health_Safety_Issue_Report__c.fields.PSE_Detailed_Description__c.label}
+                                </label>
+                                <apex:inputField id="description" styleClass="form-control"
+                                    value="{!PSE_Health_Safety_Issue_Report__c.PSE_Detailed_Description__c}"
+                                />
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <label for="{!$Component.status}">Status:</label>
+                                <apex:inputField id="status" styleClass="form-control"
+                                    value="{!PSE_Health_Safety_Issue_Report__c.PSE_Status__c}"
+                                />
+                            </div>
+                            -->
+                        </apex:form>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row" style="text-align: center">
+                    <div class="col-xs-6">
+                        <input id="form_take_photo" type="image" 
+                            src="/resource/drawingIcons/tab-camera.svg" width="35"
+                        />
+                    </div>
+                    <div class="col-xs-6">
+                        <a role="button" onclick="save();">                     
+                            <img style="background-color: #4BC076; border-radius: 50%; width: 35px; 
+                                    height: 35px; padding: 5px;" 
+                                src="/img/icon/t4v32/action/new_task_120.png" 
+                                width="25" height="25"
+                            />          
+                        </a>
+                    </div>
+                    <img id="myimage" style="image-orientation: from-image"/>
+                </div>
+            </div>
+
+            <div class="demo" id="colors_demo" style="display:none">
+                <div id="canvas-container">
+                    
+                <div id="color_box">
+                <div class="single-color" >
+                </div>
+                <div class="colors">
+                </div>
+                </div>
+                
+                <canvas id="tools_sketch" height="300" width="300"></canvas>
+                
+                <div class="collapse" id="collapseExample">
+                  <div class="row" style="background: #F0F1F2; border:0px; margin-top:40px; ">
+                      <div class="col-xs-2 col-xs-offset-1">
+                        <div class="size " onclick="myCanvas.changeSize(2);" style="height:4px;width:4px;border-radius:2px;"/>
+                      </div>
+                      <div class="col-xs-2">
+                      <div class="size" onclick="myCanvas.changeSize(4);" style="height:8px;width:8px;border-radius:4px;"/>
+                      </div>
+                      <div class="col-xs-2">
+                      <div class="size" onclick="myCanvas.changeSize(8);" style="height:14px;width:14px;border-radius:7px;"/>
+                      </div>
+                      <div class="col-xs-2">
+                      <div class="size" onclick="myCanvas.changeSize(16);" style="height:20px;width:20px;border-radius:10px;"/>
+                      </div>
+                      <div class="col-xs-2">
+                      <div class="size" onclick="myCanvas.changeSize(32);" style="height:32px;width:32px;border-radius:16px;"/>
+                      </div>
+                  </div>
+                </div>
+                </div> 
+            </div>
+            <footer class="footer" id="footer" style="display:none; text-align: center;">
+                <div class="row" style="margin-top:10px" >
+                    <div class="col-xs-2"> <!-- col-xs-offset-1 -->
+                    <span class="btn-file">
+                        <img src="/resource/drawingIcons/tab-camera.svg" width="35"/>
+                        <input style="image-orientation: from-image" type="file" id="input" />
+                    </span>
+                    </div>
+                    <div class="col-xs-2">
+                    <a role="button" onclick="myCanvas.rotateClockwise();">
+                        <img src="/resource/drawingIcons/tab-rotate.svg" width="35"/>
+                    </a>
+                    </div>
+                    <div class="col-xs-2">
+                    <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <img src="/resource/drawingIcons/tab-draw.svg" width="35"/>
+                    </a>
+                    </div>
+                    <div class="col-xs-2">
+                    <a role="button" onclick="myCanvas.discard();">
+                        <img src="/resource/drawingIcons/tab-delete.svg" width="35"/>
+                    </a>
+                    </div>
+                    <div class="col-xs-2">
+                    <a role="button" onclick="backToForm();">
+                        <img style="background-color: #BAAC93; border-radius: 50%; width: 35px; height: 35px; padding: 5px;" 
+                            src="/img/icon/t4v32/action/share_poll_120.png" width="25" height="25"
+                        />
+                    </a>
+                    </div>
+                    <div class="col-xs-2">
+                    <a role="button" onclick="save();">                     
+                        <img style="background-color: #4BC076; border-radius: 50%; width: 35px; height: 35px; padding: 5px;" 
+                            src="/img/icon/t4v32/action/new_task_120.png" width="25" height="25"
+                        />          
+                    </a>
+                    </div>
+                </div>
+            </footer>
+
+            <apex:form style="display:none">
+                <apex:commandButton id="cancelButton" value="cancelButton" action="{!cancel}" />
+            </apex:form>
+
+<script type="text/javascript">
+var client;
+
+function mysetup() {
+    client = new forcetk.Client();
+    client.setSessionToken('{!$Api.Session_ID}');
+
+    $("#form_take_photo").click(function() {
+        $("input[id='input']").click();
+        $("#footer").css("display", "");
+        $("#colors_demo").css("display", "");
+        $("#form").css("display", "none");
+        document.activeElement.blur();
+        $("*").blur();
+    });
+}
+
+function backToForm() {
+    $("#footer").css("display", "none");
+    $("#colors_demo").css("display", "none");
+    $("#form").css("display", "");
+}
+
+function save() {
+    $('#loading').css("display", "block");
+    var v = {
+        PSE_Subject__c: $(document.getElementById('{!$Component.apexform.subject}')).val(),
+        PSE_Status__c: 'Open', 
+                // TODO check on Status (how to disable when new)
+        PSE_Location__c: $(document.getElementById('{!$Component.apexform.location}')).find("option:selected").text(),
+        PSE_Detailed_Description__c: $(document.getElementById('{!$Component.apexform.description}')).val(),
+        PSE_Assigned_To__c: '{!$User.Id}'
+    };
+    console.log("location = " + v.PSE_Location__c);
+
+    var recordId = '{!Id}';
+    if(recordId == "") {
+        console.log("Attempting to create a new record");
+        client.create('PSE_Health_Safety_Issue_Report__c', v, function(r) {
+            console.log("Created new record");
+            console.log(r);
+            recordId = r.id;
+            createAttachement(recordId);
+        });
+    }
+    else {
+        console.log("Attempting to update existing record with recordId=" + recordId);
+        v.id = recordId;
+        client.update('PSE_Health_Safety_Issue_Report__c', v, function(r) {
+            console.log("Updated existing record");
+            console.log(r);
+            createAttachement(recordId);    
+        });
+    }
+
+    function createAttachement(parentId) {
+        var dataURL = document.getElementById('tools_sketch').toDataURL();
+        var base64String = dataURL.replace('data:image/png;base64,', '');
+        attachment = {
+            Body : base64String,                      
+            ParentId : parentId,
+            Name : 'Photo.png'
+        };
+        client.create('Attachment', attachment, function(r) {
+            console.log("Created Attachement");
+            console.log(r);
+            var fields = {
+                'PSE_ImageId__c': r.id
+            };
+            client.update('PSE_Health_Safety_Issue_Report__c', parentId, fields, function(r) {
+                $('#loading').css("display", "none");
+                console.log("Updated report record with attachementId:");
+                console.log(r);
+                if( (typeof sforce != 'undefined') && (sforce != null) ) {
+                    console.log("mobile");
+                    sforce.one.navigateToSObject(recordId,"detail");
+                }
+                else {
+                    console.log("desktop");
+                    $("input[value='cancelButton']").click();
+                    //window.location.href = "/" + recordId;    
+                }
+            });
+        });
+
+    } 
+}
+
+/* removed; not needed anymore since we're not using chatter to post the images, but rather attachemens on the record
+try {
+    Sfdc.canvas.publisher.subscribe({name: "publisher.showPanel",
+        onData:function(e) {
+            Sfdc.canvas.publisher.publish({name:"publisher.setValidForSubmit", payload:"true"});
+    }});
+    Sfdc.canvas.publisher.subscribe({ name: "publisher.post",
+        onData: function(e) {
+            setImageString('tools_sketch');
+    }}); 
+    function refreshFeed() {
+        Sfdc.canvas.publisher.publish({name : 'publisher.refresh',  payload : {feed: true}});
+        Sfdc.canvas.publisher.publish({name : 'publisher.close',    payload:{refresh:"true"}});
+    }
+}
+catch(e) {
+    console.log("Exception");
+    console.log(e);
+}
+*/ 
+
+var myCanvas = false;
+
+$(function() {
+    mysetup();
+
+    myCanvas = new Canvas('tools_sketch');
+    myCanvas.setImgInput('input');
+    var theCanvas = document.getElementById('tools_sketch');
+    theCanvas.width = window.innerWidth * 0.8;
+    theCanvas.height = window.innerHeight * 0.5;
+    
+    $.each(['#e74c3c', '#c0392b', '#2ecc71', '#1abc9c', '#3498db', '#9b59b6', '#f1c40f', '#f39c12'], function() {
+      $('#colors_demo .colors').append(
+          "<div class='colour' style='background-color: " + this + ";' onclick=\"changeCanvasColour('" + this + "')\"></div>");
+    });
+    $.each(['#ecf0f1', '#bdc3c7', '#7f8c8d', '#34495e', '#000000', '#ffffff'], function() {
+      $('#colors_demo .single-color').append(
+          "<div class='colour' style='background-color: " + this + ";' onclick=\"changeCanvasColour('" + this + "')\"></div>");
+    });
+    
+    $(".colour").click(function() {
+       $(".colour").removeClass().addClass('colour');
+       $(this).addClass('colour-active');
+        var currentColour = $(this).css("background-color");
+        $(".size").each(function() {
+            $(this).css("background-color", currentColour);
+            });
+    });
+    
+    $(".size").click(function() {
+       $(".size").removeClass().addClass('size');
+       $(this).addClass('size-active');
+    });
+});
+
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+function changeCanvasColour(colour) {
+    myCanvas.changeColour(colour);
+}
+</script>
+                
+       </body>
+    </html>
+</apex:page>

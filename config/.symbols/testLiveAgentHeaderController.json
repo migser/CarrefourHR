@@ -1,0 +1,66 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjK6AAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjK6AAK",
+    "methods": [
+        {
+            "annotations": [
+                {
+                    "name": "IsTest"
+                }
+            ],
+            "location": {
+                "column": 25,
+                "line": 3
+            },
+            "modifiers": [
+                "private",
+                "static",
+                "testMethod"
+            ],
+            "name": "getId",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "testLiveAgentHeaderController",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [
+            {
+                "name": "IsTest"
+            }
+        ],
+        "location": {
+            "column": 14,
+            "line": 2
+        },
+        "modifiers": [
+            "public",
+            "testMethod"
+        ],
+        "name": "testLiveAgentHeaderController",
+        "references": [],
+        "type": "testLiveAgentHeaderController"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 25,
+                "line": 4
+            },
+            "modifiers": [],
+            "name": "lah",
+            "references": [],
+            "type": "LiveAgentHeader__c"
+        }
+    ]
+}

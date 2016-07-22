@@ -1,0 +1,407 @@
+<apex:page showHeader="false" controller="WFL_SelectedLunch" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+        
+        <head>
+            <title>What's for Lunch</title>
+            <apex:stylesheet value="{!URLFOR($Resource.WFL_SLDS0101, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+            <apex:includeScript value="{!URLFOR($Resource.wfl_jquery)}"/>
+            <apex:includeScript value="{!URLFOR($Resource.wfljquerytimepickerJS)}"/>
+            <apex:stylesheet value="{!URLFOR($Resource.wfljquerytimepicker)}"/>
+            
+            <style> 
+                .slds-list__item2 {
+                padding: 8px;
+                border-radius: 4px;
+                background-clip: padding-box;
+                border: 1px solid rgb(216, 221, 230);
+                }
+                
+                .slds-list__item2:hover {
+                background-color: #f4f6f9;
+                border-color: #d8dde6;
+                }
+                
+                .slds-list__item2 + .slds-list__item2 {
+                margin-top: 8px;
+                }
+                
+                .slds .slds-radio2 {
+                display: block;
+                }
+                
+                .slds .slds-radio2 .slds-form-element__label {
+                display: inline;
+                vertical-align: middle;
+                font-size: 14px;
+                }
+                
+                .slds .slds-radio2 input[type=radio]:checked {  
+                background-color: #1589ee;   
+                }
+                
+                .slds .slds-radio2 input[type=radio] {
+                vertical-align: middle;
+                border: 1px solid #d8dde6;
+                border-radius: 50%;
+                cursor: pointer;
+                height: 15px;
+                margin-right: 3px;
+                width: 15px;
+                outline: 0;      
+                -webkit-appearance: none;  
+                }
+                
+                .slds .slds-form-element__help {
+                display:none!important;
+                }
+                
+                .slds .slds-has-error .slds-input {
+                background-color: #fff;
+                border-color: #c23934;
+                box-shadow: #c23934 0 0 0 1px inset;
+                background-clip: padding-box;
+                }
+                
+                .slds .slds-has-error .slds-select {
+                background-color: #fff;
+                border-color: #c23934;
+                box-shadow: #c23934 0 0 0 1px inset;
+                background-clip: padding-box;
+                }
+                
+                .slds .slds-has-error .slds-form-element__help  {
+                color: #c23934;
+                display:block!important;
+                }
+                
+                .slds-is-required>.slds-form-element__label:before {
+                content: '*';
+                color: #c23934;
+                position: absolute;
+                left: -0.5rem;
+                }  
+                
+                .navButtonDiv {
+          width:100%; 
+          padding: 30px 20px 0px 20px; 
+          text-align: center;
+      }
+      
+      .navButton {
+          min-width: 200px; 
+          min-height: 50px;
+      }
+                .slds-head{
+                width:100%;
+                display:inline-block;
+                }
+                
+                .slds-left{
+                width:100%;
+                position:relative;
+                float:left;
+                }
+                .slds-right{
+                width:0%;
+                position:relative;
+                float:left;
+                text-align:right;
+                }
+            </style>
+            <script>
+            function navigateTo(url) {
+                $('#spinner').show();
+                if ((typeof(sforce) != 'undefined') && (sforce.one != null)) {
+                    sforce.one.navigateToURL(url, true);
+                } else {
+                    window.open(url, '_top');
+                }
+            }
+            
+            var icons = {
+                waiting: '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#clock")}',
+                process_started: '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#threedots")}',
+                accepted: '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#check")}',
+                rejected: '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#error")}'
+            }
+            
+            var calendarImgSrc = '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#adduser")}';
+            var removeEventImgSrc = '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#clear")}';
+            
+            var colors = {
+                waiting: {background: '#FFFFFF', icon: '#F7B64B'},
+                process_started: {background: '#FFFFFF', icon: '#62B7ED'},
+                accepted: {background: 'rgba(0, 210, 194, .05)', icon: 'rgba(0, 210, 194, 1)'},
+                rejected: {background: 'rgba(255, 95, 91, .05)', icon: 'rgba(255, 95, 91, 1)'},
+            }
+            
+            var upImgSrc = '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#up")}';
+            var downImgSrc = '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#down")}';
+            var spinnerSrc = '{!URLFOR($Resource.WFL_SLDS0101, "assets/images/spinners/slds_spinner.gif")}';
+
+            
+            var lunchMeetups = [
+                <apex:repeat value="{!lunchMeetups}" var="r">
+                {
+                sfid:'{!r.sfid}',
+                name:"{!r.name}",
+                startDate:'{!r.startDate}',
+                startTime:'{!r.startTime}',
+                endTime:'{!r.endTime}',            
+                endDate:'{!r.endDate}',
+                location:"{!r.location}",
+                organiser:'{!r.organiser}',
+                nbParticipants:'{!r.nbParticipant}',
+                smallPhoto:'{!r.smallPhoto}'
+                },
+                </apex:repeat>
+            ];
+                        
+            function filter() {
+                return lunchMeetups.slice();
+            }
+            
+            function displayLunchMeetups() {
+                var lst = $('#lunchMeetupsList');
+                lst.html('');
+                lst.hide();
+                
+                result = filter();
+                
+                if (result.length > 0) {
+                    $.each(result, function (i, r) {
+                        var key = r.sfid;
+                        //r.applicationStatus.replace(' ', '_').toLowerCase();
+                        var imgSrc = icons['accepted'];
+                        var color = colors['accepted'];
+                        
+                        lst.append(
+                            '<li class="slds-list__item2" id="board-' + r.sfid + '" style="background-color: ' + color.background + '">' +
+                            '<div class="slds-tile slds-tile--board">' +
+                            '<p class="slds-tile__title slds-truncate">' +
+                            '<a onclick="navigateTo(\'/' + r.sfid + '\');" href="#">' + r.name + '</a> ' +
+                            '</p>' +
+                            '<div class="slds-tile__detail">' +
+                            '<p class="slds-truncate"><b>Lunch Date:</b> ' + r.startDate + ' at ' + r.startTime + ' to ' + r.endTime + '</p>' +
+                            '<p class="slds-truncate"><b>Organised by:</b> ' + r.organiser + '</p>' +
+                            '<p class="slds-truncate"><b>Location:&nbsp;</b><a target="_blank" href="maps://maps.apple.com/?saddr=Current Location&daddr='+r.location+'&dirflg=w">' + r.location + '</a></p>' +
+                            '<p class="slds-truncate"><b># Participants:</b> ' + r.nbParticipants +
+                            
+                            '&nbsp<button onClick="javascript:addParticipantToLunchMeetup(\'' + r.sfid + '\');" class="slds-button slds-button--icon-bare" style="">' +
+                            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon--medium">' +
+                            '<use xlink:href="' + calendarImgSrc + '"></use>' +
+                            '</svg>' +
+                            '<span class="slds-assistive-text">close</span>' +
+                            '</button>' +
+                            
+                            '<button onClick="javascript:removeParticipantFromLunchMeetup(\'' + r.sfid + '\');" class="slds-button slds-button--icon-bare" style="">' +
+                            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon--medium">' +
+                            '<use xlink:href="' + removeEventImgSrc + '"></use>' +
+                            '</svg>' +
+                            '<span class="slds-assistive-text">close</span>' +
+                            '</button>' +
+                            
+                            '</p>' +
+                            
+                            '</div>' +
+                            '<span class="slds-icon__container slds-tile--board__icon">' +
+                              '<svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon--x-small" onclick="toggleInfo(this, \'' + r.sfid + '\')">' + 
+                                '<use xlink:href="' + downImgSrc + '"></use>' + 
+                              '</svg>' + 
+                              '<span class="slds-assistive-text">More</span>' +
+                            '</span>' +
+                            
+                            //'<span class="slds-icon__container slds-tile--board__icon">' +
+                            //'<span class="slds-avatar slds-avatar--circle slds-avatar--x-small"><img onclick="toggleInfo(this, \'' + r.sfid + '\')" src="' + r.smallPhoto + '"/></span>&nbsp;' +
+                            //'<svg aria-hidden="true" class="slds-icon slds-icon--x-small" style="background: ' + color.icon + '; padding: 1.5px">' + 
+                            //        '<use xlink:href="' + imgSrc + '"></use>' + 
+                            //      '</svg>' + 
+                            //'<span class="slds-assistive-text">' + '</span>' +
+                            //'</span>' + 
+                            '</div>' +
+                            '<div id="desc-' + r.sfid + '" class="slds-hide" style="border-top: 1px solid #d8dde6;padding-top: 5px;margin-top: 5px;">' +
+                            '</div>' +
+                            '</li>'
+                        );
+                    });
+                    
+                    lst.show();
+                }
+            }
+            
+            function toggleInfo(svg, id) {
+                var use = $(svg).find('use:first-of-type');
+                var src = $(use).attr('xlink:href');
+                if (src.indexOf(downImgSrc) != -1) {
+                    Visualforce.remoting.Manager.invokeAction(
+                        '{!$RemoteAction.WFL_SelectedLunch.getParticipants}',
+                        id, 
+                        function(result, event) {
+                            if (result == undefined)
+                                return;
+                            var content = '';
+                            result.forEach(function(participant) {
+                                console.log(participant);
+                                content += '<span class="slds-avatar slds-avatar--circle slds-avatar--x-small"><img src="' + participant.smallPhotoUrl + '"/></span>&nbsp;' + participant.name + '<br/>';
+                            });
+                            $('#desc-' + result[0].lunchMeetupId).html(content);
+                            $('#desc-' + result[0].lunchMeetupId).show();
+                            //$('#desc-' + result.Id).html(result.Job_Description__c);
+                        },
+                        {escape: false}
+                    );
+             		use.attr('xlink:href', upImgSrc);
+
+                    $('#desc-' + id).html('<div class="slds-spinner--small" style="margin: auto;">' + 
+                                          '<img alt="Loading..." src="' + spinnerSrc + '" />' + 
+                                          '</div>');
+                    $('#desc-' + id).show();       
+                } else {
+                    use.attr('xlink:href', downImgSrc);
+                    $('#desc-' + id).hide();
+                }
+            }
+            
+            function addParticipantToLunchMeetup(lmId) {
+                Visualforce.remoting.timeout = 120000;
+                $('#spinner').show();
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.WFL_SelectedLunch.addParticipant}',
+                    '{!$User.Id}', lmId,
+                    handleResult
+                );
+            }
+            
+            function removeParticipantFromLunchMeetup(lmId) {
+                Visualforce.remoting.timeout = 120000;
+                $('#spinner').show();
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.WFL_SelectedLunch.removeParticipant}',
+                    '{!$User.Id}', lmId,
+                    handleResult
+                );
+            }
+    
+            function handleResult(result, event) {
+                $('#spinner').hide();
+                if(event.type === 'exception') {
+                    console.log(event);
+                    showError('Error: ' + event.result);
+                } else if (event.status) {
+                    if (result.result === 'OK') {
+                        window.location.reload();
+                    } else {
+                        console.log(event.result);
+                        showError('Error: ' + event.result.message);
+                    }
+                }
+            }
+            
+            function hideError() {
+                $('#alertDialogMessage').html('');
+                $('#alertDialog').addClass('slds-hide');
+            }
+            
+            function scroll2Top() {
+                if ($('#alertDialog').hasClass('slds-hide')) {
+                    $('#pageHeader')[0].scrollIntoView();
+                } else {
+                    $('#alertDialog')[0].scrollIntoView();
+                }
+            }
+            
+            function showError(message) {
+                $('#alertDialogMessage').html(message);
+                $('#alertDialog').removeClass('slds-hide');
+                scroll2Top();
+            }
+            
+            $(function() {
+                displayLunchMeetups();
+            });
+            </script>
+        </head>
+        <body style="padding: 1px; overflow:visible;"> 
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds" id="slds-wrapper">   
+                <!-- SPINNER OVERLAY -->
+                <div id="spinner" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; display:none; background-color:rgba(0,0,0,.7);">
+                    <div class="slds-spinner--medium" style="top: 50%; left: 50%; position: relative; margin-top: -28px; margin-left: -28px;">
+                        <img alt="Working..." src="{!URLFOR($Resource.WFL_SLDS0101, 'assets/images/spinners/slds_spinner_inverse.gif')}" />
+                    </div>
+                </div>
+                <!-- / SPINNER OVERLAY -->
+                
+                <!-- MESSAGE ALERT -->
+                <div id="alertDialog" class="slds-notify slds-notify--alert slds-theme--error slds-theme--alert-texture slds-hide slds-m-bottom--small" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <button class="slds-button slds-button--icon-inverse slds-notify__close" onclick="hideError();">
+                        <svg aria-hidden="true" class="slds-button__icon">
+                            <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/action-sprite/svg/symbols.svg#close')}"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>          
+                    <h2 id="alertDialogMessage">
+                        <svg aria-hidden="true" class="slds-icon icon-text-email slds-icon--small slds-m-right--x-small" style="float: left">
+                            <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/utility-sprite/svg/symbols.svg#ban')}"></use>
+                        </svg>
+                        Base System Alert
+                    </h2>
+                </div>
+                <!-- / MESSAGE ALERT -->
+                
+                <!-- HEADER -->
+                <div class="slds-page-header" id="pageHeader">    
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <img src="{!URLFOR($Resource.wfl_logo)}" alt="Logo" width="48px" onclick="navigateTo('{!$Page.WFL_HomePage}');" style="cursor: pointer"/>
+                        </div>
+        
+                        <div class="slds-media__body">
+                            <div class="slds-text-heading--label">What's for Lunch</div>
+                            <p class="slds-text-heading--medium" id="formTitle">Lunch Meetup</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- / HEADER -->
+                <div><br/>
+                    <div class="slds-text-heading--small" style="margin: 5px;">Selected Lunch Menu</div>
+                    <ul class="slds-list--vertical slds-has-cards">
+                        <li class="slds-list__item">
+                            <ul class="slds-head">
+                                <li class="slds-left">
+                                    <p class="slds-tile__title slds-truncate">
+                                        <apex:outputText value="{0, date, MMMM d',' yyyy}">
+                                            <apex:param value="{!lunch.Date__c}" />
+                                        </apex:outputText>
+                                    </p>
+                                    <p class="slds-truncate"><apex:outputText escape="false" value="" /></p>
+                                    <p class="slds-truncate"><apex:outputText escape="false" value="{!lunchDescription}" /></p>
+                                </li>
+                                <li class="slds-right">
+                                    
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Lunch Meetup LIST -->
+                    <br/>
+                    <div style="margin: 5px;">
+                        <div class="slds-text-heading--small">Related Lunch Meetups</div>
+                        <ul class="slds-list--vertical slds-has-cards slds-m-top--medium" id="lunchMeetupsList" />
+                    </div>
+                    <!-- / Lunch Meetup LIST -->
+                    <div class="navButtonDiv">
+                        <button class="slds-button slds-button--brand navButton" onclick="navigateTo('{!URLFOR($Page.WFL_NewLunchMeetup)}');"> 
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                                <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/standard-sprite/svg/symbols.svg#event')}"></use>
+                            </svg>
+                            Organise a Lunch Meetup
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- / REQUIRED SLDS WRAPPER -->
+        </body>
+    </html>
+</apex:page>

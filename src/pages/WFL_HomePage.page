@@ -1,0 +1,161 @@
+<apex:page showHeader="false" controller="WFL_TodayController" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">    
+
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    
+
+<head>
+  <title>What's for Lunch</title>
+  <apex:stylesheet value="{!URLFOR($Resource.WFL_SLDS0101, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+  <apex:includeScript value="{!URLFOR($Resource.wfl_jquery)}"/>
+  
+  <style>
+      #spinner {
+        width: 100%; 
+        height: 100%; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        z-index: 10; 
+        background-color:rgba(0,0,0,.7);      
+      }
+      
+      .navButtonDiv {
+          width:100%; 
+          padding: 30px 20px 0px 20px; 
+          text-align: center;
+      }
+      
+      .navButton {
+          min-width: 200px; 
+          min-height: 50px;
+      }
+  .slds-head{
+      width:100%;
+      display:inline-block;
+  }
+  .slds-left{
+      width:70%;
+      position:relative;
+      float:left;
+  }
+  .slds-right{
+      width:30%;
+      position:relative;
+      float:left;
+      text-align:right;
+  }
+  </style>
+  <script>
+    function navigateTo(url) {
+        $('#spinner').show();
+        if ((typeof(sforce) != 'undefined') && (sforce.one != null)) {
+            sforce.one.navigateToURL(url, true);
+        } else {
+            window.open(url, '_top');
+        }
+    }
+    
+    var icons = {
+        'Cooking the lunch menu': '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#close")}',
+        'Lunch menu ready': '{!URLFOR($Resource.WFL_SLDS0101, "assets/icons/utility-sprite/svg/symbols.svg#check")}',
+    }
+    
+    function displayStatus() {
+        var imgSrc = icons['{!todaysLunch.Status__c}'];
+        var placeForIcon = $('#iconStatusSpan');
+            
+        placeForIcon.append(
+            '<svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon--small" style="padding: 1.5px">' + 
+                '<use xlink:href="' + imgSrc + '"></use>' + 
+            '</svg>'
+        );
+        placeForIcon.show();
+    }
+    
+    $(function() {
+        displayStatus();
+        
+        var tL = '{!todaysLunch}';
+		if (tL != '')
+            $('#todaysLunch').show();
+    });
+    
+    
+  </script>
+</head>    
+<body>    
+
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="slds">    
+
+    <!-- MASTHEAD -->
+    <div class="slds-page-header slds-text-align--center" role="banner">    
+        <span class="slds-icon__container--circle">
+            <img src="{!URLFOR($Resource.wfl_logo)}" alt="Logo" width="80px"/>
+        </span>
+        <p class="slds-text-heading--small">
+            <span>Today's Lunch Menu</span>
+        </p>
+    </div>
+        
+    <!-- / MASTHEAD -->    
+    <div id="spinner" class="slds-hide">
+        <div class="slds-spinner--medium" style="top: 50%;left: 50%;position: relative;margin-top: -28px;margin-left: -28px;">
+            <img alt="Loading..." src="{!URLFOR($Resource.WFL_SLDS0101, 'assets/images/spinners/slds_spinner_inverse.gif')}" />
+        </div>        
+      </div><br/>
+      <div id="todaysLunch" class="slds-hide">
+          <ul class="slds-list--vertical slds-has-cards">
+              <li class="slds-list__item">
+               <ul class="slds-head">
+                <li class="slds-left">
+                  <p class="slds-tile__title slds-truncate"><a href="#" onclick="navigateTo('{!$Page.WFL_Lunch}?lunchId={!todaysLunch.id}');">
+                      <apex:outputText value="{0, date, MMMM d',' yyyy}">
+                          <apex:param value="{!todaysLunch.Date__c}" />
+                      </apex:outputText></a>
+                  </p>
+                  <p class="slds-truncate"><apex:outputText escape="false" value="{!lunchDescription}" /></p>
+                  <p class="slds-truncate"># Lunch Meetups: {!todaysLunch.Lunch_Meetups__c}</p>
+                </li>
+                <li class="slds-right">
+                    <apex:repeat value="{!lmOrganisers}" var="lmO">
+                        <span class="slds-avatar slds-avatar--circle slds-avatar--x-small"><img src="{!lmO}"/></span>
+                    </apex:repeat>
+                </li>
+               </ul>                  
+              </li>
+              <li>
+	              <img style="padding: 10px;height: 150px;margin-left: auto;margin-right: auto;display: block;" src="{!lunchPictureUrl}" />
+              </li>
+          </ul>
+      </div>
+    
+<!-- FOOTER -->
+          
+          <!-- BUTTONS -->
+          <div style="padding-top: 0px">
+              <div class="navButtonDiv">
+                  <button class="slds-button slds-button--brand navButton" onclick="navigateTo('{!URLFOR($Page.WFL_LunchMeetups)}');"> 
+                      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                          <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/standard-sprite/svg/symbols.svg#groups')}"></use>
+                      </svg>
+                      See all Lunch Meetups
+                  </button>
+              </div>
+              
+              <div class="navButtonDiv">
+                  <button class="slds-button slds-button--brand navButton" onclick="navigateTo('{!URLFOR($Page.WFL_NewLunchMeetup)}');"> 
+                      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--left slds-button__icon--large">
+                          <use xlink:href="{!URLFOR($Resource.WFL_SLDS0101, 'assets/icons/standard-sprite/svg/symbols.svg#event')}"></use>
+                      </svg>
+                      Organise a Lunch Meetup
+                  </button>
+              </div>      
+          </div>
+          
+    <!-- / BUTTONS -->      
+  </div>
+  <!-- / REQUIRED SLDS WRAPPER -->    
+
+</body>
+</html>
+</apex:page>

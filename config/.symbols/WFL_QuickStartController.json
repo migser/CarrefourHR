@@ -1,0 +1,295 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000002BjJ2AAK",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000002BjJ2AAK",
+    "methods": [
+        {
+            "annotations": [
+                {
+                    "name": "RemoteAction"
+                }
+            ],
+            "location": {
+                "column": 27,
+                "line": 6
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "createLunchMenus",
+            "parameters": [],
+            "references": [],
+            "returnType": "Boolean",
+            "type": null
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 27,
+                "line": 40
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "getLunchIndex",
+            "parameters": [
+                {
+                    "name": "lunchs",
+                    "type": "LIST"
+                },
+                {
+                    "name": "lunchDate",
+                    "type": "Date"
+                }
+            ],
+            "references": [],
+            "returnType": "Integer",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "RemoteAction"
+                }
+            ],
+            "location": {
+                "column": 27,
+                "line": 51
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "removeFutureLunchMenus",
+            "parameters": [],
+            "references": [],
+            "returnType": "Boolean",
+            "type": null
+        },
+        {
+            "annotations": [
+                {
+                    "name": "RemoteAction"
+                }
+            ],
+            "location": {
+                "column": 27,
+                "line": 66
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "createChatterGroup",
+            "parameters": [],
+            "references": [],
+            "returnType": "Boolean",
+            "type": null
+        }
+    ],
+    "name": "WFL_QuickStartController",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 33,
+                "line": 3
+            },
+            "modifiers": [
+                "static",
+                "public",
+                "final"
+            ],
+            "name": "NB_DAYS_TO_CREATE",
+            "references": [],
+            "type": "Integer"
+        }
+    ],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 14,
+            "line": 1
+        },
+        "modifiers": [
+            "public"
+        ],
+        "name": "WFL_QuickStartController",
+        "references": [],
+        "type": "WFL_QuickStartController"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 8
+            },
+            "modifiers": [],
+            "name": "lunchsToCreate",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 9
+            },
+            "modifiers": [],
+            "name": "currentDate",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 10
+            },
+            "modifiers": [],
+            "name": "i",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 26,
+                "line": 11
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 25
+            },
+            "modifiers": [],
+            "name": "lunchs",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 27,
+                "line": 26
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 25,
+                "line": 27
+            },
+            "modifiers": [],
+            "name": "lunchIndex",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 56,
+                "line": 40
+            },
+            "modifiers": [],
+            "name": "lunchs",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 69,
+                "line": 40
+            },
+            "modifiers": [],
+            "name": "lunchDate",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 17,
+                "line": 41
+            },
+            "modifiers": [],
+            "name": "lunchIndex",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 42
+            },
+            "modifiers": [],
+            "name": "lunch",
+            "references": [],
+            "type": "Lunch__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 28,
+                "line": 53
+            },
+            "modifiers": [],
+            "name": "lunchsToDelete",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 18,
+                "line": 54
+            },
+            "modifiers": [],
+            "name": "currentDate",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 38,
+                "line": 68
+            },
+            "modifiers": [],
+            "name": "myGroups",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 32,
+                "line": 76
+            },
+            "modifiers": [],
+            "name": "myGroup",
+            "references": [],
+            "type": "CollaborationGroup"
+        }
+    ]
+}
