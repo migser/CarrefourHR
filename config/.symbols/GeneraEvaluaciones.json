@@ -1,0 +1,288 @@
+{
+    "constructors": [],
+    "externalReferences": [],
+    "id": "01p50000003SFbOAAW",
+    "innerClasses": [],
+    "interfaces": [],
+    "key": "01p50000003SFbOAAW",
+    "methods": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 2
+            },
+            "modifiers": [
+                "static",
+                "public"
+            ],
+            "name": "Datos",
+            "parameters": [],
+            "references": [],
+            "returnType": "void",
+            "type": null
+        }
+    ],
+    "name": "GeneraEvaluaciones",
+    "namespace": null,
+    "parentClass": "",
+    "properties": [],
+    "tableDeclaration": {
+        "annotations": [],
+        "location": {
+            "column": 27,
+            "line": 1
+        },
+        "modifiers": [
+            "public",
+            "with sharing"
+        ],
+        "name": "GeneraEvaluaciones",
+        "references": [],
+        "type": "GeneraEvaluaciones"
+    },
+    "variables": [
+        {
+            "annotations": [],
+            "location": {
+                "column": 6,
+                "line": 3
+            },
+            "modifiers": [],
+            "name": "plantilla",
+            "references": [],
+            "type": "Id"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 6,
+                "line": 4
+            },
+            "modifiers": [],
+            "name": "aprobador",
+            "references": [],
+            "type": "Id"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 5
+            },
+            "modifiers": [],
+            "name": "inicio1",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 6
+            },
+            "modifiers": [],
+            "name": "inicio2",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 7
+            },
+            "modifiers": [],
+            "name": "inicio3",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 8
+            },
+            "modifiers": [],
+            "name": "inicio4",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 10
+            },
+            "modifiers": [],
+            "name": "fin1",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 11
+            },
+            "modifiers": [],
+            "name": "fin2",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 12
+            },
+            "modifiers": [],
+            "name": "fin3",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 8,
+                "line": 13
+            },
+            "modifiers": [],
+            "name": "fin4",
+            "references": [],
+            "type": "Date"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 15
+            },
+            "modifiers": [],
+            "name": "inicio",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 14,
+                "line": 20
+            },
+            "modifiers": [],
+            "name": "fin",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 26
+            },
+            "modifiers": [],
+            "name": "empleados",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 33
+            },
+            "modifiers": [],
+            "name": "eval",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 11,
+                "line": 34
+            },
+            "modifiers": [],
+            "name": "e",
+            "references": [],
+            "type": "Id"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 17,
+                "line": 35
+            },
+            "modifiers": [],
+            "name": "i",
+            "references": [],
+            "type": "Integer"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 12,
+                "line": 42
+            },
+            "modifiers": [],
+            "name": "eval_id",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 43
+            },
+            "modifiers": [],
+            "name": "e",
+            "references": [],
+            "type": "Evaluacion__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 22,
+                "line": 47
+            },
+            "modifiers": [],
+            "name": "resp",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 24,
+                "line": 48
+            },
+            "modifiers": [],
+            "name": "pref",
+            "references": [],
+            "type": "LIST"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 21,
+                "line": 50
+            },
+            "modifiers": [],
+            "name": "r",
+            "references": [],
+            "type": "Respuesta__c"
+        },
+        {
+            "annotations": [],
+            "location": {
+                "column": 23,
+                "line": 55
+            },
+            "modifiers": [],
+            "name": "p",
+            "references": [],
+            "type": "Preferencia__c"
+        }
+    ]
+}

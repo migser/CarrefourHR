@@ -931,7 +931,7 @@
                 "id": "ApexClass.PowerRelatedListCtrl",
                 "lastModifiedById": "00550000005yqnMAAQ",
                 "lastModifiedByName": "Miguel Serrano+Caldeiro",
-                "lastModifiedDate": "2016-07-21T09:06:18.000Z",
+                "lastModifiedDate": "2016-07-28T14:22:23.000Z",
                 "manageableState": "unmanaged",
                 "type": "ApexClass",
                 "leaf": true,
@@ -3823,6 +3823,28 @@
                 "title": "AttachmentTrigger",
                 "checked": false,
                 "text": "AttachmentTrigger",
+                "cls": "",
+                "level": 2,
+                "isFolder": false,
+                "children": [],
+                "select": false
+            },
+            {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T19:43:46.000Z",
+                "fileName": "triggers/EvaluacionTrigger.trigger",
+                "fullName": "EvaluacionTrigger",
+                "id": "ApexTrigger.EvaluacionTrigger",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T19:43:46.000Z",
+                "manageableState": "unmanaged",
+                "type": "ApexTrigger",
+                "leaf": true,
+                "title": "EvaluacionTrigger",
+                "checked": false,
+                "text": "EvaluacionTrigger",
                 "cls": "",
                 "level": 2,
                 "isFolder": false,
@@ -13354,6 +13376,247 @@
                                 "title": "TimeSinceTargetInMins",
                                 "isFolder": false,
                                 "id": "CustomObject.EntityMilestone.fields.TimeSinceTargetInMins",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    }
+                ],
+                "select": false
+            },
+            {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T08:47:40.000Z",
+                "fileName": "objects/Evaluacion__c.object",
+                "fullName": "Evaluacion__c",
+                "id": "CustomObject.Evaluacion__c",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T08:47:40.000Z",
+                "manageableState": "unmanaged",
+                "type": "CustomObject",
+                "leaf": false,
+                "title": "Evaluacion__c",
+                "checked": false,
+                "text": "Evaluacion__c",
+                "cls": "folder",
+                "level": 2,
+                "isFolder": true,
+                "children": [
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Evaluacion__c.actionOverrides",
+                        "text": "actionOverrides",
+                        "title": "actionOverrides",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Accept",
+                                "title": "Accept",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.Accept",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "CancelEdit",
+                                "title": "CancelEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.CancelEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Clone",
+                                "title": "Clone",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.Clone",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Delete",
+                                "title": "Delete",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.Delete",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Edit",
+                                "title": "Edit",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.Edit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Follow",
+                                "title": "Follow",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.Follow",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "List",
+                                "title": "List",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.List",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "New",
+                                "title": "New",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.New",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "SaveEdit",
+                                "title": "SaveEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.SaveEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tab",
+                                "title": "Tab",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.Tab",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "View",
+                                "title": "View",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.actionOverrides.View",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Evaluacion__c.fields",
+                        "text": "fields",
+                        "title": "fields",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Descripcion__c",
+                                "title": "Descripcion__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.fields.Descripcion__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Fin__c",
+                                "title": "Fin__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.fields.Fin__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Inicio__c",
+                                "title": "Inicio__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.fields.Inicio__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Plantilla__c",
+                                "title": "Plantilla__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.fields.Plantilla__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Evaluacion__c.listViews",
+                        "text": "listViews",
+                        "title": "listViews",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "All",
+                                "title": "All",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.listViews.All",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Evaluacion__c.validationRules",
+                        "text": "validationRules",
+                        "title": "validationRules",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Periodo_Correcto",
+                                "title": "Periodo_Correcto",
+                                "isFolder": false,
+                                "id": "CustomObject.Evaluacion__c.validationRules.Periodo_Correcto",
                                 "select": false
                             }
                         ],
@@ -23637,6 +23900,205 @@
                 "select": false
             },
             {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T19:07:18.000Z",
+                "fileName": "objects/Plantilla__c.object",
+                "fullName": "Plantilla__c",
+                "id": "CustomObject.Plantilla__c",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T19:07:18.000Z",
+                "manageableState": "unmanaged",
+                "type": "CustomObject",
+                "leaf": false,
+                "title": "Plantilla__c",
+                "checked": false,
+                "text": "Plantilla__c",
+                "cls": "folder",
+                "level": 2,
+                "isFolder": true,
+                "children": [
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Plantilla__c.actionOverrides",
+                        "text": "actionOverrides",
+                        "title": "actionOverrides",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Accept",
+                                "title": "Accept",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.Accept",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "CancelEdit",
+                                "title": "CancelEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.CancelEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Clone",
+                                "title": "Clone",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.Clone",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Delete",
+                                "title": "Delete",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.Delete",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Edit",
+                                "title": "Edit",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.Edit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Follow",
+                                "title": "Follow",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.Follow",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "List",
+                                "title": "List",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.List",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "New",
+                                "title": "New",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.New",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "SaveEdit",
+                                "title": "SaveEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.SaveEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tab",
+                                "title": "Tab",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.Tab",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "View",
+                                "title": "View",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.actionOverrides.View",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Plantilla__c.fields",
+                        "text": "fields",
+                        "title": "fields",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Descripcion__c",
+                                "title": "Descripcion__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.fields.Descripcion__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Rol__c",
+                                "title": "Rol__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.fields.Rol__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Plantilla__c.listViews",
+                        "text": "listViews",
+                        "title": "listViews",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "All",
+                                "title": "All",
+                                "isFolder": false,
+                                "id": "CustomObject.Plantilla__c.listViews.All",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    }
+                ],
+                "select": false
+            },
+            {
                 "createdById": "00550000005cqPvAAI",
                 "createdByName": "Jay Zuckert",
                 "createdDate": "2016-07-20T11:07:28.000Z",
@@ -23672,6 +24134,434 @@
                                 "title": "Attachment__c",
                                 "isFolder": false,
                                 "id": "CustomObject.Policy__kav.fields.Attachment__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    }
+                ],
+                "select": false
+            },
+            {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T18:47:13.000Z",
+                "fileName": "objects/Preferencia__c.object",
+                "fullName": "Preferencia__c",
+                "id": "CustomObject.Preferencia__c",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T18:47:13.000Z",
+                "manageableState": "unmanaged",
+                "type": "CustomObject",
+                "leaf": false,
+                "title": "Preferencia__c",
+                "checked": false,
+                "text": "Preferencia__c",
+                "cls": "folder",
+                "level": 2,
+                "isFolder": true,
+                "children": [
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Preferencia__c.actionOverrides",
+                        "text": "actionOverrides",
+                        "title": "actionOverrides",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Accept",
+                                "title": "Accept",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.Accept",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "CancelEdit",
+                                "title": "CancelEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.CancelEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Clone",
+                                "title": "Clone",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.Clone",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Delete",
+                                "title": "Delete",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.Delete",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Edit",
+                                "title": "Edit",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.Edit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Follow",
+                                "title": "Follow",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.Follow",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "List",
+                                "title": "List",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.List",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "New",
+                                "title": "New",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.New",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "SaveEdit",
+                                "title": "SaveEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.SaveEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tab",
+                                "title": "Tab",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.Tab",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "View",
+                                "title": "View",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.actionOverrides.View",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Preferencia__c.fields",
+                        "text": "fields",
+                        "title": "fields",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Comentario__c",
+                                "title": "Comentario__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.fields.Comentario__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Evaluacion__c",
+                                "title": "Evaluacion__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.fields.Evaluacion__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Pregunta__c",
+                                "title": "Pregunta__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.fields.Pregunta__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Respuesta__c",
+                                "title": "Respuesta__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.fields.Respuesta__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Preferencia__c.listViews",
+                        "text": "listViews",
+                        "title": "listViews",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "All",
+                                "title": "All",
+                                "isFolder": false,
+                                "id": "CustomObject.Preferencia__c.listViews.All",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    }
+                ],
+                "select": false
+            },
+            {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T08:59:57.000Z",
+                "fileName": "objects/Pregunta__c.object",
+                "fullName": "Pregunta__c",
+                "id": "CustomObject.Pregunta__c",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T08:59:57.000Z",
+                "manageableState": "unmanaged",
+                "type": "CustomObject",
+                "leaf": false,
+                "title": "Pregunta__c",
+                "checked": false,
+                "text": "Pregunta__c",
+                "cls": "folder",
+                "level": 2,
+                "isFolder": true,
+                "children": [
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Pregunta__c.actionOverrides",
+                        "text": "actionOverrides",
+                        "title": "actionOverrides",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Accept",
+                                "title": "Accept",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.Accept",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "CancelEdit",
+                                "title": "CancelEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.CancelEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Clone",
+                                "title": "Clone",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.Clone",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Delete",
+                                "title": "Delete",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.Delete",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Edit",
+                                "title": "Edit",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.Edit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Follow",
+                                "title": "Follow",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.Follow",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "List",
+                                "title": "List",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.List",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "New",
+                                "title": "New",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.New",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "SaveEdit",
+                                "title": "SaveEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.SaveEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tab",
+                                "title": "Tab",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.Tab",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "View",
+                                "title": "View",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.actionOverrides.View",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Pregunta__c.fields",
+                        "text": "fields",
+                        "title": "fields",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Descripcion__c",
+                                "title": "Descripcion__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.fields.Descripcion__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Pregunta__c",
+                                "title": "Pregunta__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.fields.Pregunta__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tipo__c",
+                                "title": "Tipo__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.fields.Tipo__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Pregunta__c.listViews",
+                        "text": "listViews",
+                        "title": "listViews",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "All",
+                                "title": "All",
+                                "isFolder": false,
+                                "id": "CustomObject.Pregunta__c.listViews.All",
                                 "select": false
                             }
                         ],
@@ -27440,6 +28330,412 @@
                                 "title": "UnitPrice",
                                 "isFolder": false,
                                 "id": "CustomObject.QuoteLineItem.fields.UnitPrice",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    }
+                ],
+                "select": false
+            },
+            {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T19:11:39.000Z",
+                "fileName": "objects/RespPlantilla__c.object",
+                "fullName": "RespPlantilla__c",
+                "id": "CustomObject.RespPlantilla__c",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T19:36:48.000Z",
+                "manageableState": "unmanaged",
+                "type": "CustomObject",
+                "leaf": false,
+                "title": "RespPlantilla__c",
+                "checked": false,
+                "text": "RespPlantilla__c",
+                "cls": "folder",
+                "level": 2,
+                "isFolder": true,
+                "children": [
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.RespPlantilla__c.actionOverrides",
+                        "text": "actionOverrides",
+                        "title": "actionOverrides",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Accept",
+                                "title": "Accept",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.Accept",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "CancelEdit",
+                                "title": "CancelEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.CancelEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Clone",
+                                "title": "Clone",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.Clone",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Delete",
+                                "title": "Delete",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.Delete",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Edit",
+                                "title": "Edit",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.Edit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Follow",
+                                "title": "Follow",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.Follow",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "List",
+                                "title": "List",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.List",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "New",
+                                "title": "New",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.New",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "SaveEdit",
+                                "title": "SaveEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.SaveEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tab",
+                                "title": "Tab",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.Tab",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "View",
+                                "title": "View",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.actionOverrides.View",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.RespPlantilla__c.fields",
+                        "text": "fields",
+                        "title": "fields",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Plantilla__c",
+                                "title": "Plantilla__c",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.fields.Plantilla__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Pregunta__c",
+                                "title": "Pregunta__c",
+                                "isFolder": false,
+                                "id": "CustomObject.RespPlantilla__c.fields.Pregunta__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    }
+                ],
+                "select": false
+            },
+            {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T09:03:43.000Z",
+                "fileName": "objects/Respuesta__c.object",
+                "fullName": "Respuesta__c",
+                "id": "CustomObject.Respuesta__c",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T09:30:48.000Z",
+                "manageableState": "unmanaged",
+                "type": "CustomObject",
+                "leaf": false,
+                "title": "Respuesta__c",
+                "checked": false,
+                "text": "Respuesta__c",
+                "cls": "folder",
+                "level": 2,
+                "isFolder": true,
+                "children": [
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Respuesta__c.actionOverrides",
+                        "text": "actionOverrides",
+                        "title": "actionOverrides",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Accept",
+                                "title": "Accept",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.Accept",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "CancelEdit",
+                                "title": "CancelEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.CancelEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Clone",
+                                "title": "Clone",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.Clone",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Delete",
+                                "title": "Delete",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.Delete",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Edit",
+                                "title": "Edit",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.Edit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Follow",
+                                "title": "Follow",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.Follow",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "List",
+                                "title": "List",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.List",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "New",
+                                "title": "New",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.New",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "SaveEdit",
+                                "title": "SaveEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.SaveEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tab",
+                                "title": "Tab",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.Tab",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "View",
+                                "title": "View",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.actionOverrides.View",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Respuesta__c.fields",
+                        "text": "fields",
+                        "title": "fields",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Evaluacion__c",
+                                "title": "Evaluacion__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.fields.Evaluacion__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Justificacion__c",
+                                "title": "Justificacion__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.fields.Justificacion__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Pregunta__c",
+                                "title": "Pregunta__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.fields.Pregunta__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Respuesta__c",
+                                "title": "Respuesta__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.fields.Respuesta__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Valor__c",
+                                "title": "Valor__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.fields.Valor__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Respuesta__c.listViews",
+                        "text": "listViews",
+                        "title": "listViews",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "All",
+                                "title": "All",
+                                "isFolder": false,
+                                "id": "CustomObject.Respuesta__c.listViews.All",
                                 "select": false
                             }
                         ],
@@ -40870,6 +42166,28 @@
                 "title": "liveagent_online",
                 "checked": false,
                 "text": "liveagent_online",
+                "cls": "",
+                "level": 2,
+                "isFolder": false,
+                "children": [],
+                "select": false
+            },
+            {
+                "createdById": "00550000005yqnMAAQ",
+                "createdByName": "Miguel Serrano+Caldeiro",
+                "createdDate": "2016-07-28T11:40:35.000Z",
+                "fileName": "staticresources/lodash.resource",
+                "fullName": "lodash",
+                "id": "StaticResource.lodash",
+                "lastModifiedById": "00550000005yqnMAAQ",
+                "lastModifiedByName": "Miguel Serrano+Caldeiro",
+                "lastModifiedDate": "2016-07-28T11:40:35.000Z",
+                "manageableState": "unmanaged",
+                "type": "StaticResource",
+                "leaf": true,
+                "title": "lodash",
+                "checked": false,
+                "text": "lodash",
                 "cls": "",
                 "level": 2,
                 "isFolder": false,

@@ -4524,5 +4524,37 @@
         "manageableState": "unmanaged",
         "type": "ApexTrigger",
         "mmState": "clean"
+    },
+    "EvaluacionTrigger.trigger": {
+        "id": "01q50000000McmQAAS",
+        "name": "EvaluacionTrigger",
+        "createdDate": "2016-07-28T19:43:46.000+0000",
+        "createdById": "00550000005yqnMAAQ",
+        "namespacePrefix": null,
+        "lastModifiedById": "00550000005yqnMAAQ",
+        "lastModifiedDate": "2016-07-28T20:05:06.000+0000",
+        "fullName": "EvaluacionTrigger",
+        "fileName": "unpackaged/triggers/EvaluacionTrigger.trigger",
+        "createdByName": "Miguel Serrano+Caldeiro",
+        "lastModifiedByName": "Miguel Serrano+Caldeiro",
+        "manageableState": "unmanaged",
+        "type": "ApexTrigger",
+        "mmState": "clean"
+    },
+    "GeneraEvaluaciones.cls": {
+        "id": "01p50000003SFbOAAW",
+        "name": "GeneraEvaluaciones",
+        "createdDate": "2016-07-28T22:24:54.000+0000",
+        "createdById": "00550000005yqnMAAQ",
+        "namespacePrefix": null,
+        "lastModifiedById": "00550000005yqnMAAQ",
+        "lastModifiedDate": "2016-07-28T23:11:52.000+0000",
+        "fullName": "GeneraEvaluaciones",
+        "fileName": "unpackaged/classes/GeneraEvaluaciones.cls",
+        "createdByName": "Miguel Serrano+Caldeiro",
+        "lastModifiedByName": "Miguel Serrano+Caldeiro",
+        "manageableState": "unmanaged",
+        "type": "ApexClass",
+        "mmState": "clean"
     }
 }
